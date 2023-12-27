@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="playhere.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="here0000" x="2" y="2" width="522" height="338"/>
+	<SubTexture name="here0001" x="2" y="2" width="522" height="338"/>
+	<SubTexture name="here0002" x="2" y="346" width="522" height="338"/>
+	<SubTexture name="here0003" x="2" y="346" width="522" height="338"/>
+	<SubTexture name="here0004" x="2" y="2" width="522" height="338"/>
+	<SubTexture name="here0005" x="2" y="2" width="522" height="338"/>
+	<SubTexture name="here0006" x="2" y="346" width="522" height="338"/>
+	<SubTexture name="here0007" x="2" y="346" width="522" height="338"/>
+	<SubTexture name="here0008" x="2" y="2" width="522" height="338"/>
+	<SubTexture name="here0009" x="2" y="2" width="522" height="338"/>
+	<SubTexture name="here0010" x="2" y="346" width="522" height="338"/>
+	<SubTexture name="here0011" x="2" y="346" width="522" height="338"/>
+</TextureAtlas>

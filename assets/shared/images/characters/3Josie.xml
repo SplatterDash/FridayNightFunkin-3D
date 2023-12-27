@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="3Josie.png">
+<SubTexture name="3Josie clear throat0000" x="0" y="0" width="1030" height="1649" frameX="-423" frameY="-287" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie clear throat0001" x="1030" y="0" width="1023" height="1655" frameX="-420" frameY="-281" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie clear throat0002" x="1030" y="0" width="1023" height="1655" frameX="-420" frameY="-281" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie idle0000" x="2053" y="0" width="1078" height="1603" frameX="-411" frameY="-333" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie idle0001" x="3131" y="0" width="1038" height="1622" frameX="-431" frameY="-314" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie idle0002" x="4169" y="0" width="1006" height="1650" frameX="-445" frameY="-286" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie idle0003" x="0" y="1655" width="1002" height="1658" frameX="-456" frameY="-278" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie idle0004" x="1002" y="1655" width="1017" height="1654" frameX="-445" frameY="-282" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Down0000" x="2019" y="1655" width="1222" height="1401" frameX="-299" frameY="-545" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Down0001" x="3241" y="1655" width="1156" height="1455" frameX="-313" frameY="-491" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Hey0000" x="4397" y="1655" width="1028" height="1645" frameX="-434" frameY="-291" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Hey0001" x="0" y="3313" width="1005" height="1653" frameX="-460" frameY="-283" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Hey0002" x="1005" y="3313" width="1033" height="1657" frameX="-445" frameY="-279" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Hey0003" x="2038" y="3313" width="1033" height="1657" frameX="-445" frameY="-279" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Hey0004" x="1005" y="3313" width="1033" height="1657" frameX="-445" frameY="-279" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Hey0005" x="1005" y="3313" width="1033" height="1657" frameX="-445" frameY="-279" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Left0000" x="3071" y="3313" width="1402" height="1627" frameX="-266" frameY="-314" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Left0001" x="4473" y="3313" width="1367" height="1637" frameX="-316" frameY="-303" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Right0000" x="0" y="4970" width="1251" height="1704" frameX="-436" frameY="-286" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Right0001" x="1251" y="4970" width="1162" height="1714" frameX="-436" frameY="-276" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Up0000" x="2413" y="4970" width="996" height="2037" frameX="-488" frameY="0" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Josie Sing Up0001" x="3409" y="4970" width="1081" height="2035" frameX="-460" frameY="0" frameWidth="2224" frameHeight="2224" />
+</TextureAtlas>

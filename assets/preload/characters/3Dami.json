@@ -1,0 +1,177 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				201,
+				153
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				209,
+				288
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				224,
+				223
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "missdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				194,
+				397
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "missup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				159,
+				164
+			],
+			"anim": "hey",
+			"fps": 24,
+			"name": "hey",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				215,
+				234
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				210,
+				287
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "altup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				210,
+				155
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "altdown",
+			"indices": []
+		},
+		{
+			"offsets": [
+				205,
+				190
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				146,
+				199
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				161,
+				234
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "missleft"
+		},
+		{
+			"offsets": [
+				220,
+				251
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "missright"
+		},
+		{
+			"offsets": [
+				140,
+				201
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "altleft"
+		},
+		{
+			"offsets": [
+				197,
+				188
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "altright"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/3Dami",
+	"position": [
+		110,
+		330
+	],
+	"healthicon": "3Dami",
+	"flip_x": true,
+	"healthbar_colors": [
+		40,
+		84,
+		203
+	],
+	"camera_position": [
+		-200,
+		-260
+	],
+	"sing_duration": 4,
+	"scale": 1.1
+}

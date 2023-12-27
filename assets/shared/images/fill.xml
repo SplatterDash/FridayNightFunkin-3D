@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fill.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fill0000" x="2" y="2" width="242" height="195"/>
+	<SubTexture name="fill0001" x="2" y="2" width="242" height="195"/>
+	<SubTexture name="fill0002" x="250" y="2" width="242" height="195"/>
+	<SubTexture name="fill0003" x="250" y="2" width="242" height="195"/>
+	<SubTexture name="fill0004" x="2" y="2" width="242" height="195"/>
+	<SubTexture name="fill0005" x="2" y="2" width="242" height="195"/>
+	<SubTexture name="fill0006" x="250" y="2" width="242" height="195"/>
+	<SubTexture name="fill0007" x="250" y="2" width="242" height="195"/>
+	<SubTexture name="fill0008" x="2" y="2" width="242" height="195"/>
+	<SubTexture name="fill0009" x="2" y="2" width="242" height="195"/>
+	<SubTexture name="fill0010" x="250" y="2" width="242" height="195"/>
+	<SubTexture name="fill0011" x="250" y="2" width="242" height="195"/>
+</TextureAtlas>

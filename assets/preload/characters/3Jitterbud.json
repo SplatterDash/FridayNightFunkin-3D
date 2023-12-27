@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-2,
+				0
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "3Jitterbud idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "hey",
+			"fps": 12,
+			"name": "3Jitterbud Hey",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-20,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "3Jitterbud Sing Down"
+		},
+		{
+			"offsets": [
+				1,
+				-2
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "3Jitterbud Sing Right"
+		},
+		{
+			"offsets": [
+				3,
+				2
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "3Jitterbud Sing Left"
+		},
+		{
+			"offsets": [
+				-3,
+				87
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "3Jitterbud Sing Up"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				115
+			],
+			"anim": "laugh",
+			"fps": 12,
+			"name": "3Jitterbud funny",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/3Jitterbud",
+	"position": [
+		-900,
+		-310
+	],
+	"healthicon": "3Jitterbud",
+	"flip_x": false,
+	"healthbar_colors": [
+		120,
+		120,
+		255
+	],
+	"camera_position": [
+		755,
+		490
+	],
+	"sing_duration": 4,
+	"scale": 0.4
+}

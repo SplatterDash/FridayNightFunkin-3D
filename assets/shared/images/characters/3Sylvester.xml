@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="3Sylvester.png">
+<SubTexture name="3Sylvester hit0000" x="0" y="0" width="1643" height="2150" frameX="-543" frameY="-539" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester hit0001" x="1643" y="0" width="1529" height="2215" frameX="-545" frameY="-480" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester hit0002" x="3172" y="0" width="1452" height="2201" frameX="-538" frameY="-494" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester hit0003" x="4624" y="0" width="1411" height="2197" frameX="-530" frameY="-498" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0000" x="6035" y="0" width="969" height="1943" frameX="-513" frameY="-650" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0001" x="7004" y="0" width="959" height="1935" frameX="-542" frameY="-658" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0002" x="7963" y="0" width="976" height="1933" frameX="-519" frameY="-660" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0003" x="8939" y="0" width="976" height="1933" frameX="-519" frameY="-660" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0004" x="8939" y="0" width="976" height="1933" frameX="-519" frameY="-660" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0005" x="8939" y="0" width="976" height="1933" frameX="-519" frameY="-660" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0006" x="8939" y="0" width="976" height="1933" frameX="-519" frameY="-660" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0007" x="9915" y="0" width="1332" height="1927" frameX="-148" frameY="-672" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0008" x="0" y="2215" width="1297" height="1926" frameX="-194" frameY="-672" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0009" x="1297" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0010" x="2568" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0011" x="2568" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0012" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0013" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0014" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0015" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0016" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0017" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0018" x="3839" y="2215" width="1271" height="1931" frameX="-222" frameY="-667" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0019" x="5110" y="2215" width="1302" height="1869" frameX="-194" frameY="-729" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0020" x="6412" y="2215" width="1294" height="1847" frameX="-202" frameY="-751" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0021" x="7706" y="2215" width="1082" height="1946" frameX="-392" frameY="-652" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0022" x="8788" y="2215" width="1149" height="1928" frameX="-344" frameY="-670" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0023" x="8788" y="2215" width="1149" height="1928" frameX="-344" frameY="-670" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0024" x="8788" y="2215" width="1149" height="1928" frameX="-344" frameY="-670" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0025" x="9937" y="2215" width="1181" height="1888" frameX="-312" frameY="-710" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0026" x="0" y="4161" width="1187" height="1865" frameX="-306" frameY="-733" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0027" x="1187" y="4161" width="1258" height="1592" frameX="-228" frameY="-1013" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0028" x="2445" y="4161" width="1250" height="1617" frameX="-219" frameY="-988" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0029" x="2445" y="4161" width="1250" height="1617" frameX="-219" frameY="-988" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0030" x="3695" y="4161" width="1252" height="1624" frameX="-217" frameY="-981" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0031" x="4947" y="4161" width="1258" height="1592" frameX="-228" frameY="-1013" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0032" x="6205" y="4161" width="1436" height="2565" frameX="-432" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0033" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0034" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0035" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0036" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0037" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0038" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0039" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0040" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0041" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0042" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0043" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0044" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0045" x="7641" y="4161" width="1336" height="2536" frameX="-500" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0046" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0047" x="8977" y="4161" width="1430" height="2565" frameX="-443" frameY="-44" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0048" x="10407" y="4161" width="1344" height="2536" frameX="-505" frameY="-73" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0049" x="0" y="6726" width="1380" height="2529" frameX="-477" frameY="-80" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0050" x="0" y="6726" width="1380" height="2529" frameX="-477" frameY="-80" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0051" x="1380" y="6726" width="1195" height="2515" frameX="-537" frameY="-94" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0052" x="2575" y="6726" width="1210" height="2495" frameX="-532" frameY="-114" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0053" x="3785" y="6726" width="931" height="1928" frameX="-647" frameY="-666" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0054" x="4716" y="6726" width="917" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0055" x="4716" y="6726" width="917" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0056" x="5633" y="6726" width="901" height="1949" frameX="-694" frameY="-645" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0057" x="6534" y="6726" width="919" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0058" x="6534" y="6726" width="919" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0059" x="6534" y="6726" width="919" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0060" x="6534" y="6726" width="919" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0061" x="6534" y="6726" width="919" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0062" x="6534" y="6726" width="919" height="1947" frameX="-677" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0063" x="7453" y="6726" width="916" height="1943" frameX="-670" frameY="-651" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0064" x="8369" y="6726" width="1155" height="1870" frameX="-308" frameY="-718" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0065" x="0" y="9255" width="1073" height="1869" frameX="-392" frameY="-726" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0066" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0067" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0068" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0069" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0070" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0071" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0072" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0073" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0074" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0075" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0076" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0077" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0078" x="1073" y="9255" width="1077" height="1888" frameX="-385" frameY="-707" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0079" x="2150" y="9255" width="1117" height="1844" frameX="-364" frameY="-752" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0080" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0081" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0082" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0083" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0084" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0085" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester mockery0086" x="3267" y="9255" width="1101" height="1832" frameX="-363" frameY="-764" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester idle0000" x="4368" y="9255" width="969" height="1943" frameX="-513" frameY="-650" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester idle0001" x="5337" y="9255" width="1050" height="1919" frameX="-453" frameY="-674" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester idle0002" x="6387" y="9255" width="1022" height="1932" frameX="-462" frameY="-661" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester idle0003" x="7409" y="9255" width="968" height="1940" frameX="-509" frameY="-653" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester idle0004" x="8377" y="9255" width="985" height="1947" frameX="-493" frameY="-646" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Down0000" x="0" y="11202" width="1362" height="1622" frameX="-256" frameY="-972" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Down0001" x="1362" y="11202" width="1395" height="1614" frameX="-241" frameY="-980" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Left0000" x="8369" y="6726" width="1155" height="1870" frameX="-308" frameY="-718" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Left0001" x="2757" y="11202" width="1073" height="1869" frameX="-392" frameY="-726" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Right0000" x="3830" y="11202" width="1381" height="2219" frameX="-558" frameY="-477" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Right0001" x="5211" y="11202" width="1310" height="2219" frameX="-545" frameY="-476" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Up0000" x="6521" y="11202" width="1237" height="2581" frameX="-583" frameY="-28" frameWidth="2224" frameHeight="3150" />
+<SubTexture name="3Sylvester Sing Up0001" x="7758" y="11202" width="1290" height="2536" frameX="-554" frameY="-73" frameWidth="2224" frameHeight="3150" />
+</TextureAtlas>

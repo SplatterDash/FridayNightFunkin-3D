@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-2,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				-89
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				28,
+				56
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				77,
+				22
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-88,
+				59
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				14,
+				60
+			],
+			"anim": "ImSharlie",
+			"fps": 24,
+			"name": "imsharlie",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-85,
+				5
+			],
+			"anim": "scared",
+			"fps": 24,
+			"name": "scared",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/3Sharlie",
+	"position": [
+		-90,
+		70
+	],
+	"healthicon": "3Sharlie",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		75,
+		90
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "hey",
+			"fps": 12,
+			"name": "3Josie Hey",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				10,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "3Josie Sing Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				1,
+				-2
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "3Josie Sing Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				3,
+				2
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "3Josie Sing Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-3,
+				-3
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "3Josie Sing Up",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-2,
+				0
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "idle",
+			"loop": false,
+			"name": "3Josie idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "clearthroat",
+			"loop": false,
+			"name": "3Josie clear throat"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/3Josie",
+	"position": [
+		-940,
+		-590
+	],
+	"healthicon": "3Josie",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		755,
+		590
+	],
+	"sing_duration": 4,
+	"scale": 0.45
+}

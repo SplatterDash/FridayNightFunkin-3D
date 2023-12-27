@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="3Jitterbud.png">
+<SubTexture name="3Jitterbud funny0000" x="0" y="0" width="1611" height="1911" frameX="-525" frameY="-33" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud funny0001" x="1611" y="0" width="1578" height="1870" frameX="-513" frameY="-73" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud funny0002" x="3189" y="0" width="1624" height="1900" frameX="-491" frameY="-44" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud funny0003" x="0" y="0" width="1611" height="1911" frameX="-525" frameY="-33" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud funny0004" x="1611" y="0" width="1578" height="1870" frameX="-513" frameY="-73" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud funny0005" x="3189" y="0" width="1624" height="1900" frameX="-491" frameY="-44" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud idle0000" x="4813" y="0" width="1080" height="1525" frameX="-570" frameY="-129" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud idle0001" x="0" y="1911" width="1108" height="1478" frameX="-530" frameY="-177" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud idle0002" x="1108" y="1911" width="1093" height="1491" frameX="-544" frameY="-164" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud idle0003" x="2201" y="1911" width="1056" height="1518" frameX="-588" frameY="-137" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud idle0004" x="4813" y="0" width="1080" height="1525" frameX="-570" frameY="-129" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Down0000" x="3257" y="1911" width="1202" height="1281" frameX="-522" frameY="-384" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Down0001" x="0" y="3429" width="1157" height="1323" frameX="-522" frameY="-342" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Hey0000" x="1157" y="3429" width="1166" height="1464" frameX="-421" frameY="-160" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Hey0001" x="2323" y="3429" width="1179" height="1461" frameX="-399" frameY="-162" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Hey0002" x="3502" y="3429" width="1203" height="1463" frameX="-386" frameY="-161" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Hey0003" x="3502" y="3429" width="1203" height="1463" frameX="-386" frameY="-161" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Left0000" x="0" y="4893" width="1512" height="1506" frameX="-122" frameY="-118" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Left0001" x="1512" y="4893" width="1508" height="1461" frameX="-174" frameY="-162" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Right0000" x="3020" y="4893" width="1262" height="1487" frameX="-633" frameY="-183" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Right0001" x="4282" y="4893" width="1226" height="1494" frameX="-616" frameY="-175" frameWidth="2224" frameHeight="1668" />
+<SubTexture name="3Jitterbud Sing Up0000" x="0" y="6399" width="1125" height="1693" frameX="-578" frameY="-251" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Jitterbud Sing Up0001" x="1125" y="6399" width="1144" height="1665" frameX="-571" frameY="-278" frameWidth="2224" frameHeight="2224" />
+</TextureAtlas>

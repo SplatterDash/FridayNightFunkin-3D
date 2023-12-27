@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				215,
+				234
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "3Peacock idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				260,
+				236
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "3Peacock SING DOWN",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				218,
+				217
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "3Peacock SING UP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				252,
+				240
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "3Peacock SING RIGHT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				205,
+				237
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "3Peacock SING LEFT",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/3Peacock",
+	"position": [
+		-550,
+		-410
+	],
+	"healthicon": "3Cock",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		123
+	],
+	"camera_position": [
+		320,
+		530
+	],
+	"sing_duration": 4,
+	"scale": 0.43
+}

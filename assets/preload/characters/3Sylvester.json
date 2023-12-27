@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				200,
+				220
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "3Sylvester idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				260,
+				226
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "3Sylvester Sing Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				218,
+				227
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "3Sylvester Sing Up",
+			"indices": []
+		},
+		{
+			"offsets": [
+				222,
+				228
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "3Sylvester Sing Left"
+		},
+		{
+			"offsets": [
+				245,
+				247
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "3Sylvester Sing Right"
+		},
+		{
+			"offsets": [
+				202,
+				225
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "mock",
+			"loop": false,
+			"name": "3Sylvester mockery"
+		},
+		{
+			"offsets": [
+				260,
+				240
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "hurt",
+			"loop": false,
+			"name": "3Sylvester hit"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/3Sylvester",
+	"position": [
+		-690,
+		-950
+	],
+	"healthicon": "3Vester",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		255,
+		0
+	],
+	"camera_position": [
+		230,
+		680
+	],
+	"sing_duration": 3,
+	"scale": 0.5
+}

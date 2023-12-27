@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-20,
+				-230
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				127,
+				-232
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-36,
+				-113
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				15,
+				-121
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				15,
+				-95
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-11,
+				-200
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "hi",
+			"indices": [],
+			"name": "hihi"
+		},
+		{
+			"offsets": [
+				8,
+				-226
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "fuckyou",
+			"indices": [],
+			"name": "fuckyour"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/3Mako",
+	"position": [
+		-110,
+		60
+	],
+	"healthicon": "3Mako",
+	"flip_x": false,
+	"healthbar_colors": [
+		118,
+		234,
+		154
+	],
+	"camera_position": [
+		0,
+		200
+	],
+	"sing_duration": 4,
+	"scale": 0.9
+}

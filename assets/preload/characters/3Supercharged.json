@@ -1,0 +1,99 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				22,
+				9
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "3Supercharged SING RIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "danceLeft",
+			"indices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"name": "3Supercharged idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "danceRight",
+			"indices": [
+				4,
+				5,
+				6,
+				7
+			],
+			"name": "3Supercharged idle"
+		},
+		{
+			"offsets": [
+				0,
+				1
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "3Supercharged SING DOWN"
+		},
+		{
+			"offsets": [
+				28,
+				6
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "3Supercharged SING UP"
+		},
+		{
+			"offsets": [
+				-63,
+				2
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "3Supercharged SING LEFT"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/3Jitterbud-Supercharged",
+	"position": [
+		-890,
+		-600
+	],
+	"healthicon": "3Supercharged",
+	"flip_x": true,
+	"healthbar_colors": [
+		35,
+		0,
+		255
+	],
+	"camera_position": [
+		75,
+		90
+	],
+	"sing_duration": 4,
+	"scale": 0.3
+}
