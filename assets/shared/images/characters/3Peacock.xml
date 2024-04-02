@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="3Peacock.png">
-<SubTexture name="3Peacock idle0000" x="0" y="0" width="849" height="1532" frameX="-695" frameY="-477" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock idle0001" x="849" y="0" width="918" height="1465" frameX="-643" frameY="-543" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock idle0002" x="1767" y="0" width="907" height="1476" frameX="-652" frameY="-532" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock idle0003" x="2674" y="0" width="882" height="1501" frameX="-675" frameY="-507" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock idle0004" x="0" y="1532" width="876" height="1525" frameX="-679" frameY="-483" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock idle0005" x="876" y="1532" width="849" height="1531" frameX="-695" frameY="-477" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING DOWN0000" x="1725" y="1532" width="1130" height="1462" frameX="-647" frameY="-572" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING DOWN0001" x="2855" y="1532" width="1109" height="1538" frameX="-688" frameY="-496" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING RIGHT0000" x="0" y="3070" width="1125" height="1566" frameX="-696" frameY="-468" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING RIGHT0001" x="1125" y="3070" width="1105" height="1545" frameX="-690" frameY="-489" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING LEFT0000" x="2230" y="3070" width="1049" height="1454" frameX="-386" frameY="-558" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING LEFT0001" x="3279" y="3070" width="1034" height="1469" frameX="-413" frameY="-543" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING UP0000" x="0" y="4636" width="975" height="1895" frameX="-615" frameY="-134" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Peacock SING UP0001" x="975" y="4636" width="990" height="1864" frameX="-612" frameY="-164" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Peacock idle0000" x="0" y="0" width="367" height="661" frameX="-299" frameY="-205" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock idle0001" x="367" y="0" width="382" height="651" frameX="-288" frameY="-214" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock idle0002" x="749" y="0" width="371" height="651" frameX="-297" frameY="-214" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock idle0003" x="1120" y="0" width="369" height="654" frameX="-298" frameY="-211" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock idle0004" x="0" y="661" width="370" height="657" frameX="-296" frameY="-208" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock idle0005" x="370" y="661" width="367" height="660" frameX="-299" frameY="-205" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock idle0006" x="370" y="661" width="367" height="660" frameX="-299" frameY="-205" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING DOWN0000" x="737" y="661" width="471" height="631" frameX="-278" frameY="-246" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING DOWN0001" x="1208" y="661" width="464" height="664" frameX="-296" frameY="-213" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING LEFT0000" x="0" y="1325" width="453" height="627" frameX="-166" frameY="-240" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING LEFT0001" x="453" y="1325" width="446" height="634" frameX="-178" frameY="-233" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING RIGHT0000" x="899" y="1325" width="480" height="676" frameX="-299" frameY="-201" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING RIGHT0001" x="1379" y="1325" width="473" height="667" frameX="-297" frameY="-210" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING UP0000" x="0" y="2001" width="420" height="816" frameX="-265" frameY="-58" frameWidth="956" frameHeight="956" />
+<SubTexture name="3Peacock SING UP0001" x="420" y="2001" width="428" height="803" frameX="-263" frameY="-71" frameWidth="956" frameHeight="956" />
 </TextureAtlas>

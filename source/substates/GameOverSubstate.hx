@@ -7,6 +7,7 @@ import flixel.FlxObject;
 import flixel.FlxSubState;
 import flixel.math.FlxPoint;
 import flixel.sound.FlxSound;
+import lime.utils.Assets;
 
 import states.FreeplayState;
 
@@ -19,6 +20,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	var appear:Bool = false;
 	var deathChar:FlxSprite;
 	var doSecret:Bool = false;
+	var deathTimer:FlxTimer = null;
 
 	var stageSuffix:String = "";
 
@@ -30,6 +32,8 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static var instance:GameOverSubstate;
 	var deathSound:FlxSound;
 	var deathLine:FlxSound;
+
+	var theInt:Int;
 
 	public static function resetVariables() {
 		characterName = '3dami';
@@ -69,16 +73,18 @@ class GameOverSubstate extends MusicBeatSubstate
 		add(boyfriend);**/
 
 		var exclude:Array<Int> = [];
-		if(characterName == '3den') {
+		if(lineLocation == '3den') {
 			if(FlxG.save.data.denSecrets == null) {
 				FlxG.save.data.denSecrets = 'first';
 				FlxG.save.flush();
 			}
-			exclude = (FlxG.save.data.denSecrets == 'first' ? [3, 4] : (FlxG.save.data.denSecrets == 'second' ? [2, 4] : [2, 3]));
-		}
+			exclude = FlxG.save.data.denSecrets == 'first' ? [9, 10] : (FlxG.save.data.denSecrets == 'second' ? [8, 10] : [8, 9]);
+		} else exclude = [8, 9, 10];
 
 		//FlxG.sound.play()
-		deathLine = new FlxSound().loadEmbedded(Paths.sound(lineLocation.toLowerCase() + '/gameover-' + FlxG.random.int(1, 4, exclude)), false, true);
+		theInt = FlxG.random.int(1, 10, exclude);
+		var obs = (Main.isOBS && Assets.exists(lineLocation.toLowerCase() + 'obs/gameover-${theInt}.ogg', SOUND)) ? '/obs' : ''; 
+		deathLine = FlxG.sound.load(Paths.sound(lineLocation.toLowerCase() + obs + '/gameover-' + theInt), false, true);
 		//deathLine.group = null;
 		if(deathLine.length >= 60000) {
 			doSecret = true;
@@ -100,9 +106,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 		FlxG.camera.bgColor = FlxColor.BLACK;
-		FlxG.camera.zoom = 0.8;
-
-		//boyfriend.playAnim('firstDeath');
 
 		deathSprite = new FlxSprite(0, 0);
 		deathSprite.frames = Paths.getSparrowAtlas('retry', 'shared');
@@ -120,8 +123,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		deathChar.frames = Paths.getSparrowAtlas('gameover', 'shared');
 		deathChar.animation.addByPrefix('deathBeat', characterName.toLowerCase() + '-death', 12, false);
 		deathChar.animation.addByPrefix('getUp', characterName.toLowerCase() + '-revive', 12, false);
-		deathChar.scrollFactor.set();
-		deathChar.setGraphicSize(Std.int(deathChar.width * 0.35));
+		//deathChar.scrollFactor.set();
 		deathChar.updateHitbox();
 		deathChar.screenCenter(X);
 		add(deathChar);
@@ -129,24 +131,35 @@ class GameOverSubstate extends MusicBeatSubstate
 		deathChar.animation.play('deathBeat');
 
 		deathSound = FlxG.sound.play(Paths.sound(deathSoundName), 1 * ClientPrefs.data.soundVolume);
+
+		FlxG.camera.zoom = 0.8;
+
+		if(doSecret) deathTimer = new FlxTimer().start(60, function(tmr:FlxTimer) {
+			canExit = false;
+			FlxTween.tween(FlxG.camera, { y: FlxG.camera.y - 150}, 2, { ease: FlxEase.cubeInOut });
+			tmr.destroy();
+		}, 1);
 	}
 
 	public var startedDeath:Bool = false;
 	var isFollowingAlready:Bool = false;
 	public var canExit:Bool = true;
 
+	override function onFocusLost() {
+		if(deathLine != null) deathLine.active = false;
+		if(deathTimer != null) deathTimer.active = false;
+	}
+
+	override function onFocus() {
+		if(deathLine != null) deathLine.active = true;
+		if(deathTimer != null) deathTimer.active = true;
+	}
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
 		PlayState.instance.callOnScripts('onUpdate', [elapsed]);
-
-		@:privateAccess
-		//trace(deathLine._time);
-		if(doSecret && (deathLine.time >= 60000)) {
-			canExit = false;
-			FlxTween.tween(FlxG.camera, { y: FlxG.camera.y - 150}, 2, { ease: FlxEase.cubeInOut });
-		}
 
 		if (controls.ACCEPT && canExit)
 		{
@@ -178,10 +191,10 @@ class GameOverSubstate extends MusicBeatSubstate
 			deathChar.visible = true;
 		}
 
-		if (!canExit && !isEnding) {
+		if (!canExit && !isEnding && elapsed % (FlxG.updateFramerate / 60) == 0) {
 			if(deathSprite.alpha > 0) deathSprite.alpha -= 0.001;
 			if(FlxG.sound.music.volume > 0) FlxG.sound.music.volume -= 0.0001;
-			FlxG.camera.zoom += 0.0000001;
+			FlxG.camera.zoom += 0.00001;
 		}
 		
 		if (deathSprite.animation.curAnim != null && appear)
@@ -209,7 +222,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			}
 		}
 		
-		if(updateCamera) FlxG.camera.followLerp = FlxMath.bound(elapsed * 0.6 / (FlxG.updateFramerate / 60), 0, 1);
+		if(updateCamera) FlxG.camera.followLerp = FlxMath.bound(elapsed * 0.6 / (FlxG.updateFramerate > 60 ? 1 : FlxG.updateFramerate / 60), 0, 1);
 		else FlxG.camera.followLerp = 0;
 
 		if (FlxG.sound.music.playing)
@@ -238,9 +251,10 @@ class GameOverSubstate extends MusicBeatSubstate
 			if(deathSound.playing) deathSound.stop();
 			if(deathLine.playing) deathLine.stop();
 			FlxG.sound.music.volume = 1 * ClientPrefs.data.musicVolume;
-			FlxG.sound.play(Paths.music('gameOverEnd'), 1 * ClientPrefs.data.soundVolume);
 			deathSprite.color = FlxColor.WHITE;
 			deathChar.animation.play('getUp');
+			if(lineLocation.toLowerCase() == '3mega' && theInt == 3) FlxG.sound.play(Paths.sound('3mega/gameover-3-end'), 1 * ClientPrefs.data.soundVolume);
+			FlxG.sound.play(Paths.music('gameOverEnd'), 1 * ClientPrefs.data.musicVolume);
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()

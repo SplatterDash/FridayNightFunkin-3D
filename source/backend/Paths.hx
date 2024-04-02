@@ -316,10 +316,10 @@ class Paths
 
 	inline static public function formatToSongPath(path:String) {
 		var invalidChars = ~/[~&\\;:<>#]/;
-		var hideChars = ~/[.,'"()%?!]/;
+		var hideChars = ~/[.,'"())%?!]/;
 
 		var path = invalidChars.split(path.replace(' ', '-')).join("-");
-		var almostThere = hideChars.split(path).join("").toLowerCase();
+		var almostThere = hideChars.split(path).join("").replace('!', '').toLowerCase();
 		return almostThere.replace(")", "");
 	}
 

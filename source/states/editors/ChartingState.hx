@@ -69,14 +69,9 @@ class ChartingState extends MusicBeatState
 	var eventStuff:Array<Dynamic> =
 	[
 		['', "Nothing. Yep, that's right."],
-		['Dadbattle Spotlight', "Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF"],
 		['Hey!', "Plays the \"Hey!\" animation from Bopeebo,\nValue 1: BF = Only Boyfriend, GF = Only Girlfriend,\nSomething else = Both.\nValue 2: Custom animation duration,\nleave it blank for 0.6s"],
 		['Set GF Speed', "Sets GF head bopping speed,\nValue 1: 1 = Normal speed,\n2 = 1/2 speed, 4 = 1/4 speed etc.\nUsed on Fresh during the beatbox parts.\n\nWarning: Value must be integer!"],
-		['Philly Glow', "Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, i won't add it to other weeks."],
-		['Kill Henchmen', "For Mom's songs, don't use this please, i love them :("],
 		['Add Camera Zoom', "Used on MILF on that one \"hard\" part\nValue 1: Camera zoom add (Default: 0.015)\nValue 2: UI zoom add (Default: 0.03)\nLeave the values blank if you want to use Default."],
-		['BG Freaks Expression', "Should be used only in \"school\" Stage!"],
-		['Trigger BG Ghouls', "Should be used only in \"schoolEvil\" Stage!"],
 		['Play Animation', "Plays an animation on a Character,\nonce the animation is completed,\nthe animation changes to Idle\n\nValue 1: Animation to play.\nValue 2: Character (Dad, BF, GF)"],
 		['Camera Follow Pos', "Value 1: X\nValue 2: Y\n\nThe camera won't change the follow point\nafter using this, for getting it back\nto normal, leave both values blank."],
 		['Alt Idle Animation', "Sets a specified suffix after the idle animation name.\nYou can use this to trigger 'idle-alt' if you set\nValue 2 to -alt\n\nValue 1: Character to set (Dad, BF or GF)\nValue 2: New suffix (Leave it blank to disable)"],
@@ -86,8 +81,8 @@ class ChartingState extends MusicBeatState
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"],
 		['Explode.', 'KILL. or Live.'],
-		['Mainline Camera Zooms', 'The mainline zooms for 3D.\nValue 1: END. or begin (default is begin)'],
-		['Mako Moment', 'He\'s Mako. He\'s a circle.\nHis people need him. But he can spend time with\nFoodieti for now.'],
+		['Mainline Camera Zooms', 'The mainline zooms for 3D.\nValue 1: Specific zoom property (options include:\nregular zoom, regular rotate, split screen, end.,\nparkour like, flash, breadbank,\ntwinz, ttm begin, fade in, 20racks,\nand begin, which is default).\nValue 2: Dependent on value 1\nparkour like: sharlie/offwallet/breakdown\nregular zoom/rotate: new zoom/rotate, time for zoom/rotate (uses default values if value 2 is blank)\nflash: time for flash decay (default is 0:01)\nbreadbank: outro/intro\nfade in: time for fade in (default is 0:01)\n'],
+		['Mako Moment', 'He\'s Mako. He\'s a circle.\nHis people need him. But he can spend time with\nDami for now.\nValue 1:mako gone/mako arrive (default is mako arrive)'],
 		['Change Icon', 'Change a character\'s icon.\nValue 1: Character whose icon you want to\nchange (Boyfriend or Dad)\nValue 2: Icon name followed by RGB numbers (ex. bf,\n0, 255, 255)'],
 		['UI Opacity', 'Changes the opacity of the UI items.\nThis DOES NOT affect the UI Camera or Strum Lines.\nValue 1: New alpha value\nValue 2: Time to transition to new opacity (optional)'],
 		["Camera Follow Chars", 'Turn camera movement with each note on or off.'],
@@ -101,8 +96,13 @@ class ChartingState extends MusicBeatState
 		['Dancing HUD', 'Make the HUD dance, like in Alfie Megamix.'],
 		['Rotate Notes', 'hehehe notes go brrrrrrrr'],
 		['Town BG Design', 'Creates an image for the background behind the town.\nValue 1: Name of image (place image in\n\'shared/stage\' file in assets!)\nValue 2: Time of alpha tweening in seconds (default is\n0.01)'],
-		['SATURATE.', 'SATURATE.\nValue 1: SATURATE.'],
-		['BFs In Sync', 'Toggles between both BFs singing or just one.\nOnly works if two BFs are active (3DamiDerek).\nTo place notes for just one BF, use the note type option.']
+		['SATURATE.', 'SATURATE.\nValue 1: SATURATE VELOCIPY.'],
+		['BFs In Sync', 'Toggles between both BFs singing or just one.\nOnly works if two BFs are active (3DamiDerek).\nTo place notes for just one BF, use the note type option.'],
+		['Parkour Begin', 'Start the entire game off.\nJust place this down and everything will do the rest!'],
+		['BG to Main', 'Turns the BG characters from BG characters to playable\nones.\nValue 1: Character to affect (left, right, boyfriend, boyfriend2,\ngf, dad)\nValue 2: in or out'],
+		['Spray Can', 'Does stuff with the spray can for a split screen.\nValue 1: burst, dry, or animate'],
+		['BunBeats', 'Bun Beats for Phrenic.\nValue 1: bun, beats, or blank to remove.'],
+		['CBP Gradient', 'Toggles the gradient for the Cash Back Pack on and off.']
 	];
 
 	var _file:FileReference;
@@ -280,7 +280,7 @@ class ChartingState extends MusicBeatState
 		nextRenderedSustains = new FlxTypedGroup<FlxSprite>();
 		nextRenderedNotes = new FlxTypedGroup<Note>();
 
-		FlxG.mouse.visible = true;
+		FlxG.mouse.enabled = FlxG.mouse.visible = true;
 		//FlxG.save.bind('funkin', CoolUtil.getSavePath());
 
 		//addSection();
@@ -501,7 +501,7 @@ class ChartingState extends MusicBeatState
 		blockPressWhileTypingOnStepper.push(stepperSpeed);
 		var directories:Array<String> = [Paths.getPreloadPath('characters/')];
 
-		var characters:Array<String> = ["3Dami", "3Den", "3Derek", "3DamiPLAYER", "3DerekPLAYER", "3DenPLAYER", "3DerekTTM", "3DenTTM", "3Redacted", "3Sharlie", "3Mega", "3Peacock", "3Mako", "3Foodieti", "3Jitterbud", "3Josie", "3Aleto", "3Sylvester", "3Supercharged", "3DamiDerek"];
+		var characters:Array<String> = ["3Dami", "3Den", "3Derek", "3DamiPLAYER", "3DerekPLAYER", "3DenPLAYER", "3Redacted", "3Sharlie", "3Mega", "3Peacock", "3Mako", "3Mako_big", "3Jitterbud", "3Josie", "3Aleto", "3Sylvester", "3Supercharged", "3DamiDerek"];
 
 		var player1DropDown = new FlxUIDropDownMenu(10, stepperSpeed.y + 45, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -1714,7 +1714,7 @@ class ChartingState extends MusicBeatState
 
 				//if(_song.stage == null) _song.stage = stageDropDown.selectedLabel;
 				StageData.loadDirectory(_song);
-				LoadingState.loadAndSwitchState(new PlayState());
+				MusicBeatState.switchState(new PlayState());
 			}
 
 			if(curSelectedNote != null && curSelectedNote[1] > -1) {

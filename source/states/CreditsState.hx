@@ -24,6 +24,7 @@ class CreditsState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 
 		persistentUpdate = true;
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -36,20 +37,24 @@ class CreditsState extends MusicBeatState
 
 		var defaultList:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['3D Team'],
-			['DamiNation',          'dami',             'Main Organizer, Main Artist, Animator',                                                                                          'https://twitter.com/DamiNation2020',       '2853cb'],
-			['No7e',                'no7e',             'Musician (Parkour, TTM (True To Musicality), Feelin\' Torpid, All Out)',                                                         'https://twitter.com/memory_dancer',        '679add'],
-			['ItsAudity',           'audity',           'Main Animator, Artist (additional assets), Musician (BreakBank, OffWallet, 20Racks, Twin-Z, Phrenic)',                           'https://twitter.com/ItsAudity',            'bb476b'],
-			['Aletomento',          'aleto',            'BG Artist',                                                                                                                      'https://twitter.com/aletomento',           'ffa500'],
-			['MegaFreedom',         'megaf',            'Musician (FORREAL, Mako, Full House, Game Over ( Remix))',                                                                       'https://twitter.com/MegaFreedom1274',      '9d1454'],
-			['N21',                 'nitro',            'Charting (Parkour, OffWallet, FORREAL, Phrenic, FORREAL (Overnighter Remix), Parkour (FREERUNNER Remix))',                       'https://twitter.com/tswnitro',             '32a852'],
-			['Noer',                'noer',             'Charting (BreadBank, TTM (True To Musicality), 20Racks, Feelin\' Torpid, Mako, Twin-Z, Twin-Z (Euphoria Remix)), has his money', 'https://twitter.com/ThisIsNoerlol',        '3F9369'],
-			['SplatterDash',        'splatter',         'Coding, Musician (Gettin\' Freaky (3D Remix), Cash Back Pack, Tea Time (SUGAH Remix), Boombox Blues)',                           'https://splatterdash.newgrounds.com/',     '006aff'],
-			['Redacted',            'redacted',         'The one on the speaker (and moral support)',                                                                                     'https://twitter.com/ohheyredacted',        'af8cba'],
-			['KayDoodles',          'kay',              'Fiyoure moral support',                                                                                                          'https://twitter.com/KayDoodles_',          '89CFF0'],
-			['aar0nPKT',            'aaron',            'Jitterbud chrom',                                                                                                                'https://twitter.com/AaromKT',              '80ffea'],
-			['Mako',                'mako',             'hi guys he\'s mako',                                                                                                             'https://twitter.com/helloitsmako',         'f692f6'],
-			['LazyGoobster',        'goobster',         'Thank you for allowing us to make the 17 bucks fit of your OC! (and for making Note a happy boi)',                               'https://twitter.com/LazyGoobster',         'ffffff'],
-			['17 Bucks',            'peacock',          'The bois, the gang, the broskis with the mostskis',                                                                              'https://gamebanana.com/mods/461390',       'ffffff'],
+			['DamiNation',          'dami',             'Lead Organizer, Lead Artist, Animator, Voice Actor (3Sylvester, 3Jitterbud)',                                                            'https://twitter.com/DamiNation2020',       '2853cb'],
+			['ItsAudity',           'audity',           'Co-Organizer, Lead Animator, UI Artist, Musician (BreadBank, OffWallet, 20Racks, Citrus Bliss, TwinZ, Phrenic), Voice Actor (3Josie)',   'https://twitter.com/ItsAudity',            'bb476b'],
+			['No7E',                'no7e',             'Co-Organizer, Loading Screen Artist, Musician (Parkour, TTM [True To Musicality], Feelin\' Torpid)',                                     'https://twitter.com/memory_dancer',        '679add'],
+			['Redacted',            'redacted',         'UI Art, Voice Acting (3Redacted)',                                                                                                       'https://twitter.com/ohheyredacted',        'af8cba'],
+			['Aletomento',          'aleto',            'UI/In-Game Background Artist',                                                                                                           'https://twitter.com/aletomento',           'ffa500'],
+			['MegaFreedom1274',     'megaf',            'Additional Animation, Musician (FORREAL, Game Over [1-Dimensional Remix])',                                                              'https://twitter.com/MegaFreedom1274',      '9d1454'],
+			['Noer',                'noer',             'Charting (BreadBank, TTM (True To Musicality), 20Racks, Feelin\' Torpid, Cirtus Bliss, Twin-Z, Twin-Z (Euphoria Remix)), has his money', 'https://twitter.com/ThisIsNoerlol',        '3F9369'],
+			['N21',                 'nitro',            'Charting (Parkour, OffWallet, FORREAL, Phrenic, FORREAL (Overnighter Remix), Parkour (FREERUNNER Remix))',                               'https://twitter.com/tswnitro',             '32a852'],
+			['SplatterDash',        'splatter',         'Coding, Musician (Gettin\' Freaky (3D Remix), Cash Back Pack, Tea Time (SUGAH Remix), Boombox Blues)',                                   'https://splatterdash.newgrounds.com/',     '006aff'],
+			['AsuraTM0',            'asura',            'Editor for the release trailer and trailer for Vs D[GETOUTSAVEUSGETOUTSAVEUS]',                                                          'https://twitter.com/AsuraTM0',             'ffa500'],
+			['aar0nPKT',            'aaron',            'Jitterbud chrom',                                                                                                                        'https://twitter.com/AaromKT',              '80ffea'],
+			['Mako',                'mako',             'hi guys he\'s mako',                                                                                                                     'https://twitter.com/helloitsmako',         'f692f6'],
+			['isketchiguess',       'sketch',           'Created Mako\'s 17Bucks design!',                                                                                                        'https://twitter.com/isketchisuppose',      'fffa75'],
+			['LazyGoobster',        'goobster',         'Thank you for allowing us to make the 17 bucks fit of your OC! (and for making Note a happy boi)',                                       'https://twitter.com/LazyGoobster',         'ffffff'],
+			['Neon Shikaro',        'neon',             'Beta testing',                                                                                                                           'https://twitter.com/NeonShikaro',          '5ee8d3'],
+			['ItsAlibi',            'alibi',            'Beta testing',                                                                                                                           'https://www.drpepper.com/s/',              'b907fa'],
+			['KayDoodles',          'kay',              'Fiyoure moral support',                                                                                                                  'https://twitter.com/KayDoodles_',          '89CFF0'],
+			['17 Bucks',            'peacock',          'The aesthetic inspiration for this mod, also known as the place where they pea cocks',                                                   'https://gamebanana.com/mods/461390',       'ffffff'],
 			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
@@ -75,6 +80,7 @@ class CreditsState extends MusicBeatState
 			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",								'https://twitter.com/evilsk8r',			'5ABD4B'],
 			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",								'https://twitter.com/kawaisprite',		'378FC7']
 		];
+		// aaaaand psych slipped the default list in the middle of the create function instead of making it a local var because...?
 		
 		for(i in defaultList) {
 			creditsStuff.push(i);
@@ -158,6 +164,8 @@ class CreditsState extends MusicBeatState
 					holdTime = 0;
 				}
 
+				if(FlxG.mouse.enabled && FlxG.mouse.wheel != 0) changeSelection(-FlxG.mouse.wheel * shiftMult);
+
 				if(controls.UI_DOWN || controls.UI_UP)
 				{
 					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
@@ -171,7 +179,7 @@ class CreditsState extends MusicBeatState
 				}
 			}
 
-			if(controls.ACCEPT && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4)) {
+			if((controls.ACCEPT || (FlxG.mouse.enabled && FlxG.mouse.justPressed)) && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4)) {
 				CoolUtil.browserLoad(creditsStuff[curSelected][3]);
 			}
 			if (controls.BACK)

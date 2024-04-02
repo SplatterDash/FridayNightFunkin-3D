@@ -23,7 +23,6 @@ class SaveVariables {
 	public var shaders:Bool = true;
 	public var cacheOnGPU:Bool = #if !switch false #else true #end; //From Stilic
 	public var framerate:Int = 60;
-	public var camZooms:Bool = true;
 	public var hideHud:Bool = false;
 	public var noteOffset:Int = 0;
 	public var arrowRGB:Array<Array<FlxColor>> = [
@@ -48,6 +47,7 @@ class SaveVariables {
 	public var comboStacking:Bool = true;
 	public var musicVolume:Float = 1.0;
 	public var soundVolume:Float = 1.0;
+	public var mouseOnMenu:Bool = false;
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 

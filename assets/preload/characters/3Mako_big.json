@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				28,
+				39
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				43,
+				106
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				33,
+				11
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				127,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				31,
+				2
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				111,
+				34
+			],
+			"anim": "bye",
+			"fps": 1,
+			"name": "outyall",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				115,
+				33
+			],
+			"anim": "funny",
+			"fps": 12,
+			"name": "laugh",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/3Mako-big",
+	"position": [
+		-60,
+		150
+	],
+	"healthicon": "3Mako_big",
+	"flip_x": false,
+	"healthbar_colors": [
+		40,
+		155,
+		40
+	],
+	"camera_position": [
+		-30,
+		-200
+	],
+	"sing_duration": 6.1,
+	"scale": 1.2
+}

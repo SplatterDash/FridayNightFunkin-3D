@@ -35,7 +35,7 @@ class CashBackCutsceneState extends MusicBeatState
             sound.volume *= FlxG.sound.volume * ClientPrefs.data.soundVolume;
             sound.onComplete = function() {
                 states.FreeplayState.unlockCash = true;
-                //FlxG.save.data.cashBackUnlocked = true;
+                FlxG.save.data.cashBackUnlocked = true;
                 MusicBeatState.switchState(new states.FreeplayState());
                 FlxG.sound.playMusic(Paths.music('3dmainmenu'), 1 * ClientPrefs.data.musicVolume);
             }

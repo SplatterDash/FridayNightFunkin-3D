@@ -1,27 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="3Jitterbud-Supercharged.png">
-<SubTexture name="3Supercharged idle0000" x="0" y="0" width="978" height="1623" frameX="-626" frameY="-547" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0001" x="978" y="0" width="1857" height="1535" frameX="-232" frameY="-693" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0002" x="2835" y="0" width="2075" height="1587" frameX="-58" frameY="-641" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0003" x="4910" y="0" width="1042" height="1344" frameX="-595" frameY="-844" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0004" x="0" y="1623" width="978" height="1511" frameX="-626" frameY="-678" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0005" x="978" y="1623" width="1879" height="1591" frameX="-228" frameY="-631" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0006" x="2857" y="1623" width="2075" height="1632" frameX="-110" frameY="-561" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged idle0007" x="4910" y="0" width="1042" height="1344" frameX="-595" frameY="-844" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING DOWN0000" x="4932" y="1623" width="1215" height="1211" frameX="-553" frameY="-1017" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING DOWN0001" x="0" y="3255" width="1986" height="1689" frameX="-180" frameY="-497" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING DOWN0002" x="1986" y="3255" width="2075" height="1808" frameX="-101" frameY="-380" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING DOWN0003" x="4061" y="3255" width="1135" height="1180" frameX="-593" frameY="-1008" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING LEFT0000" x="5196" y="3255" width="1293" height="1335" frameX="-93" frameY="-838" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING LEFT0001" x="0" y="5063" width="1952" height="1852" frameX="-167" frameY="-347" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING LEFT0002" x="1952" y="5063" width="2049" height="1986" frameX="-167" frameY="-189" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING LEFT0003" x="4001" y="5063" width="1187" height="1286" frameX="-222" frameY="-889" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING RIGHT0000" x="5188" y="5063" width="1389" height="1490" frameX="-839" frameY="-706" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING RIGHT0001" x="0" y="7049" width="1714" height="1821" frameX="-302" frameY="-407" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING RIGHT0002" x="1714" y="7049" width="1855" height="2046" frameX="-163" frameY="-182" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING RIGHT0003" x="3569" y="7049" width="1203" height="1346" frameX="-815" frameY="-846" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING UP0000" x="4772" y="7049" width="889" height="2195" frameX="-805" frameY="0" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING UP0001" x="0" y="9244" width="2021" height="1959" frameX="-185" frameY="-219" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING UP0002" x="2021" y="9244" width="2075" height="2005" frameX="-103" frameY="-218" frameWidth="2224" frameHeight="2224" />
-<SubTexture name="3Supercharged SING UP0003" x="4096" y="9244" width="866" height="1962" frameX="-798" frameY="-218" frameWidth="2224" frameHeight="2224" />
+<SubTexture name="3Supercharged idle0000" x="0" y="0" width="563" height="462" frameX="-219" frameY="-300" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0001" x="563" y="0" width="555" height="499" frameX="-101" frameY="-262" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0002" x="1118" y="0" width="635" height="565" frameX="-52" frameY="-196" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0003" x="1753" y="0" width="686" height="599" frameX="-11" frameY="-162" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0004" x="2439" y="0" width="715" height="575" frameX="-19" frameY="-186" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0005" x="0" y="599" width="745" height="620" frameX="0" frameY="-162" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0006" x="745" y="599" width="762" height="613" frameX="0" frameY="-149" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0007" x="1507" y="599" width="774" height="598" frameX="0" frameY="-164" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged idle0008" x="2281" y="599" width="345" height="462" frameX="-219" frameY="-300" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING DOWN0000" x="2626" y="599" width="445" height="454" frameX="-174" frameY="-313" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING DOWN0001" x="0" y="1219" width="720" height="739" frameX="-61" frameY="-28" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING DOWN0002" x="720" y="1219" width="723" height="767" frameX="-57" frameY="0" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING DOWN0003" x="1443" y="1219" width="400" height="415" frameX="-207" frameY="-353" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING LEFT0000" x="1843" y="1219" width="515" height="461" frameX="-3" frameY="-302" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING LEFT0001" x="2358" y="1219" width="767" height="755" frameX="0" frameY="-11" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING LEFT0002" x="0" y="1986" width="698" height="756" frameX="-67" frameY="-7" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING LEFT0003" x="698" y="1986" width="468" height="709" frameX="-27" frameY="-54" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING RIGHT0000" x="1166" y="1986" width="481" height="509" frameX="-296" frameY="-260" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING RIGHT0001" x="1647" y="1986" width="593" height="676" frameX="-109" frameY="-102" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING RIGHT0002" x="2240" y="1986" width="711" height="727" frameX="0" frameY="-55" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING RIGHT0003" x="0" y="2742" width="417" height="473" frameX="-285" frameY="-296" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING UP0000" x="417" y="2742" width="376" height="762" frameX="-218" frameY="-3" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING UP0001" x="793" y="2742" width="749" height="691" frameX="-23" frameY="-77" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING UP0002" x="1542" y="2742" width="765" height="705" frameX="-1" frameY="-77" frameWidth="778" frameHeight="778" />
+<SubTexture name="3Supercharged SING UP0003" x="2307" y="2742" width="305" height="689" frameX="-279" frameY="-76" frameWidth="778" frameHeight="778" />
 </TextureAtlas>

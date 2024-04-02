@@ -6,7 +6,7 @@ class IllegalCopyState extends MusicBeatState {
         super.create();
 
         FlxG.sound.music.stop();
-        FlxG.sound.play(backend.Paths.sound('illegalcopy'), 1.5);
+        FlxG.sound.play(backend.Paths.sound('illegalcopy'), 1.1);
         var tmr = new flixel.util.FlxTimer().start(5, function(tmr:FlxTimer) {
             var text = new FlxText(0, 0, FlxG.width,
                 "It seems that you are playing a non-official copy of FNF:3D.\n\nYou are being redirected for your safety, both to prevent you from getting hacked and to prevent the host program from potentially profitting off of downloadable freeware.\n\nPress ENTER to be redirected to the official FNF:3D GameBanana page.",

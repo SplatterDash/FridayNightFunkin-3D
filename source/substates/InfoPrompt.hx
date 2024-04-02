@@ -44,7 +44,7 @@ class InfoPrompt extends MusicBeatSubstate
 	override public function create():Void 
 	{
 		super.create();
-		FlxG.mouse.visible = true;
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 		panel = new FlxSprite(0, 0);
 		panelbg = new FlxSprite(0, 0);
 		makeSelectorGraphic(panel,900,475,0xff999999);
@@ -61,6 +61,9 @@ class InfoPrompt extends MusicBeatSubstate
 		panel.screenCenter();
 		panelbg.scrollFactor.set();
 		panelbg.screenCenter();
+
+		panel.active = false;
+		panelbg.active = false;
 		
 		add(panelbg);
 		add(panel);
@@ -68,6 +71,7 @@ class InfoPrompt extends MusicBeatSubstate
 		//add(buttons);
 		var textshit:FlxText = new FlxText(buttonAccept.width*2, panel.y, 600, theText, 32);
 		textshit.alignment = 'center';
+		textshit.active = false;
 		add(textshit);
 		textshit.screenCenter();
 		buttonAccept.screenCenter();
@@ -80,7 +84,7 @@ class InfoPrompt extends MusicBeatSubstate
 		super.update(elapsed);
 		
 		if(controls.ACCEPT) {
-			FlxG.mouse.visible = false;
+			if(FlxG.mouse.visible) FlxG.mouse.enabled = FlxG.mouse.visible = false;
 			okc();
 			close();
 		}

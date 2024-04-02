@@ -1,142 +1,205 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"offsets": [
+				256,
+				241
+			],
+			"anim": "hey",
+			"fps": 24,
+			"name": "hey",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				223,
+				241
+			],
+			"anim": "idle-alt",
+			"fps": 24,
+			"name": "altidle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				225,
+				241
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				197,
+				295
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				238,
+				71
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				366,
+				202
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				193,
+				150
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				330,
+				511
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "altup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				440,
+				388
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "altdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				723,
+				248
+			],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "altleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				370,
+				239
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "altright",
+			"indices": []
+		},
+		{
+			"loop": false,
 			"offsets": [
 				200,
-				90
+				292
 			],
-			"loop": false,
+			"anim": "singUPmiss",
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"name": "missup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				297,
+				141
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "missdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				351,
+				214
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "missleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				280,
+				469
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "missright",
+			"indices": []
 		},
 		{
 			"offsets": [
-				167,
-				287
+				471,
+				52
 			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [
-				220,
-				234
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "hey",
-			"indices": [],
-			"name": "hey"
-		},
-		{
-			"offsets": [
-				215,
-				234
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"offsets": [
-				262,
-				291
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP-alt",
-			"indices": [],
-			"name": "altup"
-		},
-		{
-			"offsets": [
-				270,
-				50
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "altdown"
-		},
-		{
-			"offsets": [
-				235,
-				197
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [
-				360,
-				190
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "altleft"
-		},
-		{
-			"offsets": [
-				270,
-				191
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "altright"
-		},
-		{
-			"offsets": [
-				201,
-				192
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [
-				201,
-				192
-			],
-			"loop": false,
-			"fps": 60,
+			"fps": 21,
 			"anim": "explode",
-			"indices": [],
-			"name": "explosion"
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			],
+			"name": "plod"
 		},
 		{
 			"offsets": [
-				221,
-				234
+				370,
+				230
 			],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle-alt",
 			"loop": false,
-			"name": "altidle"
+			"fps": 1,
+			"anim": "dead",
+			"indices": [],
+			"name": "dead"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/3Den",
 	"position": [
-		320,
+		450,
 		325
 	],
 	"healthicon": "3Den",
@@ -147,9 +210,9 @@
 		221
 	],
 	"camera_position": [
-		280,
-		-40
+		480,
+		-340
 	],
 	"sing_duration": 4,
-	"scale": 0.9
+	"scale": 1.2
 }

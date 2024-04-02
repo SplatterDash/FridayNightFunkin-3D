@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bgCharacters.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bg0000" x="0" y="0" width="2003" height="1102" frameX="-1" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0001" x="0" y="0" width="2003" height="1102" frameX="-1" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0002" x="2008" y="0" width="2001" height="1108" frameX="-3" frameY="0" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0003" x="2008" y="0" width="2001" height="1108" frameX="-3" frameY="0" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0004" x="4014" y="0" width="2002" height="1102" frameX="-2" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0005" x="4014" y="0" width="2002" height="1102" frameX="-2" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0006" x="6021" y="0" width="2003" height="1102" frameX="-1" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0007" x="6021" y="0" width="2003" height="1102" frameX="-1" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0008" x="0" y="1113" width="2004" height="1102" frameX="0" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0009" x="2009" y="1113" width="2004" height="1102" frameX="0" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0010" x="4018" y="1113" width="2004" height="1102" frameX="0" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0011" x="4018" y="1113" width="2004" height="1102" frameX="0" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0012" x="6027" y="1113" width="2004" height="1102" frameX="0" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+	<SubTexture name="bg0013" x="6027" y="1113" width="2004" height="1102" frameX="0" frameY="-6" frameWidth="2004" frameHeight="1108"/>
+</TextureAtlas>

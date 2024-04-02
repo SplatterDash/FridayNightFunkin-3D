@@ -1,88 +1,132 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-20,
 				-230
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				127,
-				-232
+				167,
+				-102
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-36,
-				-113
+				164,
+				297
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				15,
-				-121
+				-15,
+				219
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [
+				65,
+				-175
+			],
 			"loop": false,
-			"offsets": [
-				15,
-				-95
-			],
-			"anim": "singUP",
 			"fps": 24,
-			"name": "up",
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-1,
+				-510
+			],
+			"anim": "hi",
+			"fps": 60,
+			"name": "hihi",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-1,
+				-220
+			],
+			"anim": "fuckyou",
+			"fps": 24,
+			"name": "fuckyour",
 			"indices": []
 		},
 		{
 			"offsets": [
-				-11,
-				-200
+				82,
+				-288
 			],
-			"loop": true,
-			"fps": 24,
-			"anim": "hi",
+			"loop": false,
+			"fps": 1,
+			"anim": "wut",
 			"indices": [],
-			"name": "hihi"
+			"name": "wut"
 		},
 		{
 			"offsets": [
-				8,
-				-226
+				102,
+				-184
 			],
 			"loop": true,
-			"fps": 24,
-			"anim": "fuckyou",
+			"fps": 12,
+			"anim": "point",
 			"indices": [],
-			"name": "fuckyour"
+			"name": "woahnoway"
+		},
+		{
+			"offsets": [
+				263,
+				-76
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "transform",
+			"indices": [],
+			"name": "powerup"
+		},
+		{
+			"offsets": [
+				220,
+				-260
+			],
+			"indices": [],
+			"fps": 120,
+			"anim": "yippeee",
+			"loop": true,
+			"name": "yippeee"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/3Mako",
 	"position": [
 		-110,
-		60
+		-270
 	],
 	"healthicon": "3Mako",
 	"flip_x": false,
@@ -92,8 +136,8 @@
 		154
 	],
 	"camera_position": [
-		0,
-		200
+		-150,
+		250
 	],
 	"sing_duration": 4,
 	"scale": 0.9

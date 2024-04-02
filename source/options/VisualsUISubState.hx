@@ -90,11 +90,11 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool');
 		addOption(option);
 
-		var option:Option = new Option('Camera Zooms',
-			"If unchecked, the camera won't zoom in on a beat hit.",
-			'camZooms',
-			'bool');
-		addOption(option);
+	var option:Option = new Option('Camera Effects', //Name
+		'If unchecked, disables a majority of camera effects on all songs, including additional zooms.\nThis can improve performance, but it\'s mainly for limiting motion for those with motion sickness.', //Description
+		'camEffects', //Save data variable name
+		'bool'); //Variable type
+	addOption(option);
 
 		var option:Option = new Option('Score Text Zoom on Hit',
 			"If unchecked, disables the Score text zooming\neverytime you hit a note.",
@@ -120,13 +120,20 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool');
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+
+		var option:Option = new Option('Mouse Navigation',
+			'If checked, allows you to use the mouse to navigate menus.',
+			'mouseOnMenu',
+			'bool');
+		addOption(option);
+		option.onChange = onChangeMouse;
 		#end
 		
 		var option:Option = new Option('Pause Screen Song:',
 			"What song do you prefer for the Pause Screen?",
 			'pauseMusic',
 			'string',
-			['None', 'Breakfast', 'Tea Time']);
+			['None', 'Breakfast', 'Tea Time', 'SUGAH Remix', 'Boombox Blues']);
 		addOption(option);
 		option.onChange = onChangePauseMusic;
 
@@ -207,6 +214,11 @@ class VisualsUISubState extends BaseOptionsMenu
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.data.showFPS;
+	}
+
+	function onChangeMouse()
+	{
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 	}
 	#end
 }

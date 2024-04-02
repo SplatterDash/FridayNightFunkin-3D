@@ -14,6 +14,7 @@ class EraseSaveSubState extends MusicBeatSubstate
     public function new()
         {    
             super();
+            FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
     
             bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
             bg.alpha = 0;
@@ -70,10 +71,14 @@ class EraseSaveSubState extends MusicBeatSubstate
                     onYes = !onYes;
                     updateOptions();
                 }
+                if(FlxG.mouse.enabled && ((FlxG.mouse.overlaps(yesText) && !onYes) || (FlxG.mouse.overlaps(noText) && onYes))) {
+                    onYes = FlxG.mouse.overlaps(yesText) ? true : false;
+                    updateOptions();
+                }
                 if(controls.BACK) {
                     FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
                     close();
-                } else if(controls.ACCEPT) {
+                } else if(controls.ACCEPT || (FlxG.mouse.enabled && FlxG.mouse.justPressed)) {
                     if(onYes) {
                         FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
                         FlxG.save.erase();

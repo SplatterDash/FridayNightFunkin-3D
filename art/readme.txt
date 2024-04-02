@@ -6,8 +6,8 @@ ____                                                                      ____
 |    |   \  |   ___|   ___              |  \ |  |   ___   |___    |       |            |   \  |/  |  |   \
 |    |      |  (___|  (___|  \___|      |   \|  |  (___|  |   )   |       |     (___|  |   |  |\  |  |   |
                              ____|                 ____/
-                                         ________    __________
-                                        /        \  |          \
+                                         ________    _________
+                                        /        \  |         \
                                                  |  |          |
                                                  |  |          |
                                            ------|  |          |
@@ -30,10 +30,10 @@ also additional stuff
 FNF:3D automatically starts up with this disclaimer info but I'm puttin it here for redundancy sake
 
 FNF:3D contains flashing lights and rapid camera movements that may trigger epilepsy and/or motion sickness in some players!
-If at any point you need to disable them, the options are as follows:
+If at any point you need to disable them, the options are as follows in the Visuals/UI menu:
 
-- Flashing Lights: "Visuals and UI -> Flashing Lights"
-- Camera Movements (NOT camera zooms that occur every section): "Graphics -> Camera Effects"
+- Flashing Lights: "Flashing Lights"
+- Camera Movements (including camera zooms that occur every section): "Camera Effects"
 
 Remember you can access the options menu at any time, even when paused during gameplay!
 
@@ -43,22 +43,21 @@ Remember you can access the options menu at any time, even when paused during ga
 
 why has nobody talked about the system requirements needed for FNF smhmh
 
-FNF:3D runs a consistent 60 FPS on a Windows/Linux/Mac with the following minimum specs:
-- CPU: AMD Ryzen 3 5000, Intel Core I3 or similar model
+FNF:3D can run a consistent 60 FPS minimum on a Windows system (Linux/Mac coming soon!) without graphic option changes using the following minimum specs:
+- CPU: AMD Ryzen 3 5000, Intel Core I3 or similar model (FNF:3D utilizes multithreading during loading to keep the RAM usage down in lieu of GPU processing, which is why a strong CPU is recommended)
 - GPU: literally anything, even a potato works
 - RAM: 2 GB minimum
 - Audio: it's a rhythm game dummy OF COURSE you need some way to output audio
 
-FNF:3D utilizes multithreading during loading to keep the RAM usage down in lieu of GPU processing, which is why a strong CPU is recommended.
-If needed, you can utilize graphics settings to lower the amount of CPU/RAM usage and increase performance.
-These settings are located in the Options menu in game, under "Graphics".
+While the minimum specs are for best performance, if needed, you can utilize graphics settings to lower the amount of CPU/RAM usage and increase performance on lower-end systems, which includes options to disable shaders (Graphics options) and antialiasing (Visuals/UI options).
+There is also an in-depth Low Quality option, which disables a majority of shaders and animated sprites. This setting is located in the Options menu in game, under the Graphics section.
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-
         PERMISSIONS
 -=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 Like the vanilla FNF game, you have full permission to basically do whatever you want with FNF:3D.
-This includes streams/letsplays/reactions, memes, remixes, and so forth.
+This includes streams/letsplays/reactions, memes, remixes, and so forth. Just don't use our mod to harass people and you gucci.
 It'd be cool though if you include a little credit! Even some links would do nicely.
 
 speaking of which

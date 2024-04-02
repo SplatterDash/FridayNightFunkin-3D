@@ -23,6 +23,13 @@ import sys.io.File;
 import sys.io.Process;
 #end
 
+#if VIDEOS_ALLOWED 
+#if (hxCodec >= "3.0.0") import hxcodec.flixel.FlxVideo as VideoHandler;
+#elseif (hxCodec >= "2.6.1") import hxcodec.VideoHandler as VideoHandler;
+#elseif (hxCodec == "2.6.0") import VideoHandler;
+#else import vlc.MP4Handler as VideoHandler; #end
+#end
+
 class Main extends Sprite
 {
 	var game = {
@@ -36,6 +43,11 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPS;
+
+	#if VIDEOS_ALLOWED
+	public static var video:Null<VideoHandler> = null;
+	public static var nowPlaying:Bool = false;
+	#end
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -172,6 +184,68 @@ class Main extends Sprite
 		Application.current.window.alert(errMsg, "Error!");
 		DiscordClient.shutdown();
 		Sys.exit(1);
+	}
+	#end
+
+	#if VIDEOS_ALLOWED
+	public static function establishVideo() {
+		var daVideo:VideoHandler = new VideoHandler();
+		daVideo.stage = FlxG.stage;
+		daVideo.height = FlxG.camera.getViewRect().height;
+		daVideo.width = FlxG.camera.getViewRect().width;
+		daVideo.x = FlxG.camera.getViewRect().left;
+		daVideo.y = FlxG.camera.getViewRect().top;
+		daVideo.onEndReached.add(function() {
+			daVideo.stop();
+			daVideo.visible = false;
+			nowPlaying = false;
+		});
+		daVideo.volume = 1;
+		video = daVideo;
+	}
+	#end
+
+	//Taking a little from Doki Takeover, but trying not to do the username variables n stuff like that
+	//just checking for OBS running on the computer
+	public static var isOBS:Bool = false;
+	public static var programList:Array<String> = [
+		'obs',
+		'bdcam',
+		'fraps',
+		'xsplit',
+		'hycam2',
+		'twitchstudio'
+	];
+	#if windows
+	public static function checkOBS() {
+		#if !mobile
+		try
+		{
+			#if windows
+			var taskList:Process = new Process('tasklist');
+			#elseif (linux || macos)
+			var taskList:Process = new Process('ps --no-headers');
+			#end
+			var readableList:String = taskList.stdout.readAll().toString().toLowerCase();
+
+			for (i in 0...programList.length)
+			{
+				if (readableList.contains(programList[i]))
+					isOBS = true;
+			}
+
+			taskList.close();
+			readableList = '';
+		}
+		catch (e)
+		{
+			// If for some reason the game crashes when trying to run Process, just force OBS on
+			// in case this happens when they're streaming.
+			isOBS = true;
+		}
+		#else
+		isOBS = false;
+		#end
 	}
 	#end
 }

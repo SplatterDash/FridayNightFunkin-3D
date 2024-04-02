@@ -20,7 +20,6 @@ import shaders.ColorSwap;
 
 import Random;
 
-import states.OutdatedState;
 import states.MainMenuState;
 
 #if MODS_ALLOWED
@@ -64,12 +63,12 @@ class TitleState extends MusicBeatState
 	var psychSpr:FlxSprite;
 
 	public static var easterEggKeys:Array<String> = [
-		'PUMPKINS', 'DADDY', 'AFFLICTION', 'AUDITY', 'AMBATUKUM', 'SHUTUP', 'NOER', 'MCDONALDS', 'AYONEPH', 'DOOMI', 'NOTETTE', 'DEVELOPMENT', 'YOUMADEME'
+		'PUMPKINS', 'DADDY', 'AFFLICTION', 'AUDITY', 'AMBATUKUM', 'SHUTUP', 'NOER', 'MCDONALDS', 'AYONEPH', 'NOTETTE', 'DEVELOPMENT', 'YOUMADEME'
 	];
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 	public static var theWackys:Array<String> = [
-		"penis.", "no honey mustard", "heeeeeelp", "hartwell white.", "what're we getting for dinner?"
+		"penis.", "no honey mustard", "heeeeeelp", "hartwell white.", "what're we getting for dinner?", "freddy fazbear"
 	];
 
 	var easterEggKeysBuffer:String = '';
@@ -84,8 +83,7 @@ class TitleState extends MusicBeatState
 
 	var funnySound:FlxSound;
 	var hasAFunny:Bool = false;
-	var video:VideoHandler = null;
-	var nowPlaying:Bool = false;
+	public static var video:VideoHandler;
 
 	var mustUpdate:Bool = false;
 
@@ -112,7 +110,10 @@ class TitleState extends MusicBeatState
 		super.create();
 
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
-		FlxG.save.data.gameVersion = '1.0';
+		if(FlxG.save.data.gameVersion == null) {
+			FlxG.save.data.gameVersion = '1.0';
+			FlxG.save.flush();
+		}
 
 		ClientPrefs.loadPrefs();
 
@@ -122,6 +123,7 @@ class TitleState extends MusicBeatState
 		else if(curWacky[1].toLowerCase() == "heeeeeelp") funnySound = new FlxSound().loadEmbedded(Paths.sound('helpme'))
 		else if(curWacky[1].toLowerCase() == "hartwell white.") funnySound = new FlxSound().loadEmbedded(Paths.sound('confession'))
 		else if(curWacky[1].toLowerCase() == "what're we getting for dinner?") funnySound = new FlxSound().loadEmbedded(Paths.sound('gasstation'))
+		else if(curWacky[1].toLowerCase() == "freddy fazbear") funnySound = new FlxSound().loadEmbedded(Paths.sound('fnaf'))
 		else if(curWacky[1].toLowerCase() == "no honey mustard") funnySound = new FlxSound().loadEmbedded(Paths.sound('vineboom'));
 
 		if(funnySound != null) {
@@ -142,31 +144,27 @@ class TitleState extends MusicBeatState
 			}
 			persistentUpdate = true;
 			persistentDraw = true;
-		}
 
-		video = new VideoHandler();
-		video.height = FlxG.camera.getViewRect().height;
-		video.width = FlxG.camera.getViewRect().width;
-		video.x = FlxG.camera.getViewRect().left;
-		video.y = FlxG.camera.getViewRect().top;
-		video.onEndReached.add(function() {
-			video.stop();
-			video.visible = false;
-			nowPlaying = false;
-		});
-		video.onStopped.add(function() {
-			video.stop();
-			video.visible = false;
-		});
-		video.volume = 1;
-		//add(video);
+			#if VIDEOS_ALLOWED
+			Main.establishVideo();
+			video = Main.video;
+			//add(video);
 
-		if(curWacky[0].toLowerCase() == 'fall.') {
-			var filepath:String = Paths.video('fall');
-			video.play(filepath);
+			var filepath:String;
+			if(curWacky[0].toLowerCase() == 'fall.') {
+				filepath = Paths.video('fall');
+				video.play(filepath);
+			} else if (curWacky[0] == 'what he tell \'em') {
+				filepath = Paths.video('Bomboclaat');
+				video.play(filepath);
+			} else if (curWacky[0].toLowerCase() == 'wanna see me rage?') {
+				filepath = Paths.video('rage');
+				video.play(filepath);
+			};
+			
 			video.pause();
-			video.position = 0;
-		};
+			#end
+		}
 
 
 		FlxG.mouse.visible = false;
@@ -186,6 +184,7 @@ class TitleState extends MusicBeatState
 			{
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
+					Main.checkOBS();
 					startIntro();
 				});
 			}
@@ -199,12 +198,12 @@ class TitleState extends MusicBeatState
 	var swagShader:ColorSwap = null;
 
 	override function onFocus() {
-		if(!video.isPlaying && nowPlaying) video.resume();
+		if (!Main.nowPlaying) video.pause();
 		super.onFocus();
 	}
 
 	override function onFocusLost() {
-		if(video.isPlaying && nowPlaying) video.pause();
+		if(Main.video.isPlaying && Main.nowPlaying) video.pause();
 		super.onFocusLost();
 	}
 
@@ -422,7 +421,6 @@ class TitleState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7 * ClientPrefs.data.soundVolume);
 
 				transitioning = true;
-				video = null;
 				// FlxG.sound.music.stop();
 
 				new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -430,6 +428,7 @@ class TitleState extends MusicBeatState
 					#if html5
 					if(states.IllegalCopyState)MusicBeatState.switchState(new states.IllegalCopyState());
 					#end
+					Main.checkOBS();
 					if (FlxG.save.data.seenIntro == null || !FlxG.save.data.seenIntro) {
 						MusicBeatState.switchState(new IntroState());
 					} else {
@@ -454,7 +453,7 @@ class TitleState extends MusicBeatState
 							if (easterEggKeysBuffer.contains(word))
 							{
 								inEgg = true;
-								nowPlaying = true;
+								Main.nowPlaying = true;
 								FlxG.sound.music.fadeOut(0.5, 0.2 * ClientPrefs.data.musicVolume);
 								video.visible = true;
 								video.play(Paths.video(word.toLowerCase()));
@@ -780,10 +779,15 @@ class TitleState extends MusicBeatState
 				case 12:
 					if(!skippedIntro) {	
 						if(curWacky[0] != 'my name is walter' && curWacky[0] != 'you, me, gas station.') {
-							if (curWacky[0] == 'fall.') {
-								nowPlaying = true;
+							if (curWacky[0] == 'fall.' || curWacky[0] == 'what he tell \'em' || curWacky[0] == 'wanna see me rage?') {
+								Main.nowPlaying = true;
+								video.position = 0;
 								video.resume();
 								FlxG.sound.music.volume = 0;
+								if(curWacky[0] != 'fall.') {
+									FlxG.sound.music.pause();
+									var timer = new FlxTimer().start((video.duration - Conductor.crochet) / 1000, function(twn:FlxTimer) { FlxG.sound.music.resume(); });
+								}
 							} else {
 								addMoreText(curWacky[1]);
 								if(hasAFunny) {
@@ -813,8 +817,11 @@ class TitleState extends MusicBeatState
 						if(video != null
 							&& video.isSeekable
 							&& video.isPlaying
-							&& video.bitmapData != null)
-								video.stop()
+							&& video.bitmapData != null) {
+								video.stop();
+								video.visible = false;
+								Main.nowPlaying = false;
+							}
 							else if (funnySound != null
 								&& funnySound.playing) funnySound.stop();
 						FlxG.sound.music.volume = 0.7  * ClientPrefs.data.musicVolume;
@@ -852,7 +859,7 @@ class TitleState extends MusicBeatState
 				if(FlxG.sound.music.volume == 0) FlxG.sound.music.volume = 0.7  * ClientPrefs.data.musicVolume;
 				if(funnySound != null && funnySound.playing) funnySound.stop();
 				FlxG.camera.flash(FlxColor.WHITE, 4);
-				//trace(FlxG.camera.getViewRect().width + ' by ' + FlxG.camera.getViewRect().width);
+				if(Main.nowPlaying) Main.nowPlaying = false;
 			skippedIntro = true;
 		}
 	}

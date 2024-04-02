@@ -19,7 +19,7 @@ class FlashingState extends MusicBeatState
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Hey bro, before you get into the city's chaos, 3D contains some flashing lights and rapid camera movements that might not be favorable for people with epilepsy or motion sickness!\n\nIf that ain't your style, press ENTER to disable them now.\n\nOtherwise, press ESCAPE to keep them on and ignore this message.\n\nYou can also go to the options menu at any time to disable them!",
+			"Hey bro, before you get into the city's chaos, 3D contains some flashing lights and rapid camera movements that might not be favorable for people with epilepsy or motion sickness!\n\nIf that ain't your style, press ENTER to disable them now.\n\nOtherwise, press ESCAPE to keep them on and ignore this message.\n\nYou can also go to the options menu at any time to disable them in the Visuals/UI settings!",
 			32);
 		warnText.setFormat(Paths.font('vcr.ttf'), 40, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
@@ -37,7 +37,6 @@ class FlashingState extends MusicBeatState
 				if(!back) {
 					ClientPrefs.data.flashing = false;
 					ClientPrefs.data.camEffects = false;
-					ClientPrefs.data.camZooms = false;
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
 					FlxTween.tween(warnText, {alpha: 0}, 1, {
@@ -48,7 +47,6 @@ class FlashingState extends MusicBeatState
 				} else {
 					ClientPrefs.data.flashing = true;
 					ClientPrefs.data.camEffects = true;
-					ClientPrefs.data.camZooms = true;
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
 					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {

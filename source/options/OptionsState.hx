@@ -1,6 +1,6 @@
 package options;
 
-import states.MainMenuState;
+import hscriptBase.InterpIterator;
 import backend.StageData;
 
 class OptionsState extends MusicBeatState
@@ -10,6 +10,7 @@ class OptionsState extends MusicBeatState
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
 	public static var onPlayState:Bool = false;
+	public static var onIntro:Bool = false;
 
 	function openSelectedSubstate(label:String) {
 		switch(label) {
@@ -37,6 +38,7 @@ class OptionsState extends MusicBeatState
 		#if desktop
 		DiscordClient.changePresence("Options Menu", null);
 		#end
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
@@ -83,17 +85,25 @@ class OptionsState extends MusicBeatState
 			changeSelection(1);
 		}
 
+		if(FlxG.mouse.enabled) {
+			if(FlxG.mouse.wheel != 0) changeSelection(-FlxG.mouse.wheel);
+			for(member in grpOptions.members) if(FlxG.mouse.overlaps(member) && curSelected != grpOptions.members.indexOf(member)) {
+				curSelected = grpOptions.members.indexOf(member);
+				changeSelection(0);
+			}
+		}
+
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
 			if(onPlayState)
 			{
 				StageData.loadDirectory(PlayState.SONG);
-				LoadingState.loadAndSwitchState(new PlayState());
+				MusicBeatState.switchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}
-			else MusicBeatState.switchState(new MainMenuState());
+			else MusicBeatState.switchState(onIntro ? new states.IntroState() : new states.MainMenuState());
 		}
-		else if (controls.ACCEPT) openSelectedSubstate(options[curSelected]);
+		else if (controls.ACCEPT || (FlxG.mouse.enabled && FlxG.mouse.justPressed)) openSelectedSubstate(options[curSelected]);
 	}
 	
 	function changeSelection(change:Int = 0) {

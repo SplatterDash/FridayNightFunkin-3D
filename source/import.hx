@@ -25,7 +25,6 @@ import objects.Alphabet;
 import objects.BGSprite;
 
 import states.PlayState;
-import states.LoadingState;
 
 //Flixel
 #if (flixel >= "5.3.0")

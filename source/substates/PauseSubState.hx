@@ -13,21 +13,72 @@ import options.OptionsState;
 
 class PauseSubState extends MusicBeatSubstate
 {
-	var grpMenuShit:FlxTypedGroup<Alphabet>;
+	var grpMenuShit:FlxTypedGroup<FlxText>;
+
+	var loadingFunnies:Array<String> = [
+		'3Redacted, canonically, is addicted to prescription drugs.',
+		'We don\'t talk about the ice cream incident.',
+		'3Den has moaninglipitites.',
+		'A lot of the 3D atmosphere is inspired by Jet Set Radio Future and Bomb Rush Cyberfunk - two of Note\'s favorite games!',
+		'3Derek, as well as Audity himself, are both Hispanic.',   // included this since the TTM stuff - trust me, if it was someone saying slurs they can't reclaim, I wouldn't let that pass, but since Audity is Hispanic and it's not targetted at someone, I technically have no reason to complain. ~SPD
+		'Everyone who worked on this is a portion of another mod team, which is working on Vs Dami!',
+		'If you disrespect 3DinkleSpink, 3Derek will find you.',
+		'This mod is not compatible with 3D glasses. Not yet, at least.',
+		'Talk to Noer. See if he will show you his money.',
+		'We\'re no strangers to love. You know the rules, and so do I. I\'ve no commitments that I\'m thinking of, you wouldn\'t get this from any other guy.',
+		'3Den is a massive simp for Hideki Naganuma. It\'s why a lot of his songs take a lot of inspiration from songs of Naganuma!',
+		'This is bromi- oh no wait that was just soy sauce. This is bromine!',
+		'3Mega dies 3 days after 3D takes place from human spontaneous combustion.',
+		'3Redacted has a 20-foot Ball Python named Cornball.',
+		'3DinkleSpink dies immediately after 3D takes place.',
+		'I swear we legitimately started this before the Game Awards (we still <3 you JSR).',    // was kinda funny seeing that SEGA Power Surge commercial air on Game Awards - the only good part of the 2023 Game Awards I might add
+		'Who would win: Eminem, or "Woah dag what I cooch"?',
+		"bomboclatt!!!",
+		"3Sylvester canonically mimics whoever he encounters.",
+		"3Mako has a body count. All of his victims also die in the same alleyway.",
+		"You know that one meme drawing of the worn out person with a crazy person on a leash? That's 3Josie with 3Jitterbud on the leash.",
+		"3Derek has made 29 attempts to kill 3Jitterbud. All of them clearly failed.",
+		'3Dami canonically beats up 3Mega after their battle for losing every game in GamePigeon\'s "8Ball".',  // runner up: 3Mega losing in every game of GamePigeon's "Darts".
+		"It took 7 months to develop 3D V1.",
+		"3Dami stole the hoodie around his waist from 3Nitro.",
+		"BreakBank was 3Dami and 3Redacted's first date!",
+		"3Dami has a glock in his 'Rari - seventeen bucks, no Fitty Cent.",
+		"3DinkleSpink.",
+		"3Den really likes 3Sharlie. And I mean, like, they reeeeeeeaaallly like, like like likes, 3Sharlie.",     // this was Dami's idea, before I get hurt for this
+		"3Dami's favorite character in Smash Bros is Meta Knight.",
+		"                               huh?",
+		"3Redacted is a cannibal. Sometimes.         sleep with one eye open tonight",
+		'3Dami\'s really good at skating. He is, truly, a skater boy before 3Redacted said "cya later boi".',
+		"3Derek has doxxed at least 3 people on Twitter.",    // not the actual Audity, just to clarify
+		"Apple bottom jeans, boots with the jeans, the whole club was lookin' at jeans.",
+		'"THIS IS THE WRONG MO- oh no wait, nevermind, this is the right mod."    -sketch, 2k24',
+		"3Aleto and 3Sylvester are like siblings. You know, the kind that kill each other!",
+		"3Grey has all of the fights recorded onto YouTube. Each fight is on 3 million views and counting.",
+		"3Aleto gets evicted from her apartment because she received 68 noise complaints from her neighbors.",
+		"...uh... I couldn't come up with a fun fact here. I feel a little storpid.",
+		"3Den was a homeless breakdancer before he met 3Dami.",
+		"Oh my God, they killed Dami! ...those bastards!",
+		"3Dami met 3Derek at his favorite restaurant: Outback Steakhouse:tm:.",
+		"LazyGoobster didn't know about this mod's existance until today. Hi Goobster!",
+		"3Sharlie goes into a local Ikea and sleeps on their beds for free.",
+		"3Aleto's old apartment includes the broken microphone she smashed on a wall and thirteen other holes in the wall.",
+		'"I\'m blue."    -andy 2k24',
+		'"hi guys I\'m mako"    -mako 2k24',
+	];
 
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Options', 'Exit to menu'];
-	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
 	var practiceText:FlxText;
 	var skipTimeText:FlxText;
-	var skipTimeTracker:Alphabet;
+	var skipTimeTracker:FlxText;
 	var curTime:Float = Math.max(0, Conductor.songPosition);
 
 	var missingTextBG:FlxSprite;
 	var missingText:FlxText;
+	var loadingFunny:FlxText;
 
 	public static var songName:String = '';
 
@@ -53,11 +104,7 @@ class PauseSubState extends MusicBeatSubstate
 			menuItemsOG.remove('Exit to menu');
 		menuItems = menuItemsOG;
 
-		for (i in 0...Difficulty.list.length) {
-			var diff:String = Difficulty.getString(i);
-			difficultyChoices.push(diff);
-		}
-		difficultyChoices.push('BACK');
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 
 
 		pauseMusic = new FlxSound();
@@ -74,48 +121,68 @@ class PauseSubState extends MusicBeatSubstate
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
 		bg.scrollFactor.set();
+		bg.active = false;
 		add(bg);
 
-		var levelInfo:FlxText = new FlxText(20, 15, 0, PlayState.SONG.song, 32);
+		var graphic:FlxSprite = new FlxSprite(bg.width - 10, 10).loadGraphic(Paths.image('pausedGraphic'));
+		graphic.alpha = 0;
+		graphic.x -= graphic.frameWidth;
+		graphic.scrollFactor.set();
+		graphic.active = false;
+		add(graphic);
+
+		var levelInfo:FlxText = new FlxText(graphic.x + (graphic.width / 2), 275, 0, PlayState.SONG.song.replace(' (', '\n('));
 		levelInfo.scrollFactor.set();
-		levelInfo.setFormat(Paths.font("vcr.ttf"), 32);
-		levelInfo.updateHitbox();
+		levelInfo.setFormat(Paths.font("DonGraffiti.otf"), 70, FlxColor.fromRGB(PlayState.instance.boyfriend.healthColorArray[0], PlayState.instance.boyfriend.healthColorArray[1], PlayState.instance.boyfriend.healthColorArray[2]), CENTER);
+		levelInfo.borderStyle = FlxTextBorderStyle.OUTLINE;
+		levelInfo.borderColor = FlxColor.BLACK;
+		levelInfo.active = false;
 		add(levelInfo);
+		levelInfo.x -= (levelInfo.width / 2);
 
-		var blueballedTxt:FlxText = new FlxText(20, 15 + 32, 0, "Blueballed: " + PlayState.deathCounter, 32);
+		var blueballedTxt:FlxText = new FlxText(graphic.x + (graphic.width / 2), levelInfo.y + levelInfo.height + 1, 0, "Blueballed: " + PlayState.deathCounter);
 		blueballedTxt.scrollFactor.set();
-		blueballedTxt.setFormat(Paths.font('vcr.ttf'), 32);
-		blueballedTxt.updateHitbox();
+		blueballedTxt.setFormat(Paths.font('DonGraffiti.otf'), 58, FlxColor.fromRGB(PlayState.instance.dad.healthColorArray[0], PlayState.instance.dad.healthColorArray[1], PlayState.instance.dad.healthColorArray[2]));
+		blueballedTxt.borderStyle = FlxTextBorderStyle.OUTLINE;
+		blueballedTxt.borderColor = FlxColor.BLACK;
+		blueballedTxt.active = false;
 		add(blueballedTxt);
+		blueballedTxt.x -= (blueballedTxt.width / 2);
 
-		practiceText = new FlxText(20, 15 + 101, 0, "PRACTICE MODE", 32);
+
+		practiceText = new FlxText(bg.x + bg.width, bg.y + bg.height, 0, PlayState.chartingMode ? "CHARTING MODE" : "PRACTICE MODE");
 		practiceText.scrollFactor.set();
-		practiceText.setFormat(Paths.font('vcr.ttf'), 32);
-		practiceText.x = FlxG.width - (practiceText.width + 20);
-		practiceText.updateHitbox();
-		practiceText.visible = PlayState.instance.practiceMode;
+		practiceText.setFormat(Paths.font('DonGraffiti.otf'), 32);
+		practiceText.x -= practiceText.width + 20;
+		practiceText.y -= practiceText.height + 10;
+		practiceText.active = false;
 		add(practiceText);
+		practiceText.visible = practiceText.alive = ((practiceText.text == 'CHARTING MODE' && PlayState.chartingMode) || (practiceText.text == 'PRACTICE MODE' && PlayState.instance.practiceMode));
 
-		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "CHARTING MODE", 32);
-		chartingText.scrollFactor.set();
-		chartingText.setFormat(Paths.font('vcr.ttf'), 32);
-		chartingText.x = FlxG.width - (chartingText.width + 20);
-		chartingText.y = FlxG.height - (chartingText.height + 20);
-		chartingText.updateHitbox();
-		chartingText.visible = PlayState.chartingMode;
-		add(chartingText);
+		if(Main.isOBS) {
+			loadingFunnies.push("Be sure to subscribe to DamiNation2020 on YouTube!");
+			loadingFunnies.push('hi chat, I trapped myself in these facts to say hi to you guys');
+			loadingFunnies.push("The streamer you're watching currently has a grand total of 0 bitches.");
+		}
+		loadingFunny = new FlxText(bg.x + 10, bg.y + bg.height, bg.width - 20, ((FlxG.save.data.seenIntro == null || !FlxG.save.data.seenIntro) && Paths.formatToSongPath(PlayState.SONG.song) == 'breadbank') ? "Welcome to the streets, kid..." : loadingFunnies[FlxG.random.int(0, loadingFunnies.length - 1)]);
+		loadingFunny.setFormat(Paths.font("DonGraffiti.otf"), 45, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		loadingFunny.screenCenter(X);
+		loadingFunny.y -= (loadingFunny.height + 30);
+		loadingFunny.active = false;
+		add(loadingFunny);
 
 		blueballedTxt.alpha = 0;
 		levelInfo.alpha = 0;
 
-		levelInfo.x = FlxG.width - (levelInfo.width + 20);
-		blueballedTxt.x = FlxG.width - (blueballedTxt.width + 20);
+		//levelInfo.x = FlxG.width - (levelInfo.width + 150);
+		//blueballedTxt.x = FlxG.width - (blueballedTxt.width + 140);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
-		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
+		FlxTween.tween(graphic, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(levelInfo, {alpha: 1, y: levelInfo.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(blueballedTxt, {alpha: 1, y: blueballedTxt.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 
-		grpMenuShit = new FlxTypedGroup<Alphabet>();
+		grpMenuShit = new FlxTypedGroup<FlxText>();
 		add(grpMenuShit);
 
 		missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -189,47 +256,14 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		if (accepted && (cantUnpause <= 0 || !controls.controllerMode))
-		{
-			if (menuItems == difficultyChoices)
-			{
-				try{
-					if(menuItems.length - 1 != curSelected && difficultyChoices.contains(daSelected)) {
-
-						var name:String = PlayState.SONG.song;
-						var poop = Highscore.formatSong(name);
-						PlayState.SONG = Song.loadFromJson(poop, name);
-						MusicBeatState.resetState();
-						FlxG.sound.music.volume = 0;
-						PlayState.chartingMode = false;
-						return;
-					}					
-				}catch(e:Dynamic){
-					trace('ERROR! $e');
-
-					var errorStr:String = e.toString();
-					if(errorStr.startsWith('[file_contents,assets/data/')) errorStr = 'Missing file: ' + errorStr.substring(27, errorStr.length-1); //Missing chart
-					missingText.text = 'ERROR WHILE LOADING CHART:\n$errorStr';
-					missingText.screenCenter(Y);
-					missingText.visible = true;
-					missingTextBG.visible = true;
-					FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
-
-					super.update(elapsed);
-					return;
-				}
-
-
-				menuItems = menuItemsOG;
-				regenMenu();
-			}
-
 			switch (daSelected)
 			{
 				case "Resume":
+					if(FlxG.mouse.visible) FlxG.mouse.enabled = FlxG.mouse.visible = false;
 					close();
 				case 'Toggle Practice Mode':
 					PlayState.instance.practiceMode = !PlayState.instance.practiceMode;
-					practiceText.visible = PlayState.instance.practiceMode;
+					practiceText.alive = PlayState.instance.practiceMode;
 				case "Restart Song":
 					restartSong();
 				case "Leave Charting Mode":
@@ -287,7 +321,6 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.chartingMode = false;
 					FlxG.camera.followLerp = 0;
 			}
-		}
 	}
 
 	function deleteSkipTimeText()
@@ -299,6 +332,12 @@ class PauseSubState extends MusicBeatSubstate
 			skipTimeText.destroy();
 		}
 		skipTimeText = null;
+		if(skipTimeTracker != null)
+			{
+				skipTimeTracker.kill();
+				remove(skipTimeTracker);
+				skipTimeTracker.destroy();
+			}
 		skipTimeTracker = null;
 	}
 
@@ -319,7 +358,7 @@ class PauseSubState extends MusicBeatSubstate
 	override function destroy()
 	{
 		pauseMusic.destroy();
-
+		if(FlxG.mouse.visible) FlxG.mouse.enabled = FlxG.mouse.visible = false;
 		super.destroy();
 	}
 
@@ -338,7 +377,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		for (item in grpMenuShit.members)
 		{
-			item.targetY = bullShit - curSelected;
+			/**item.targetY = bullShit - curSelected;
 			bullShit++;
 
 			item.alpha = 0.6;
@@ -354,6 +393,13 @@ class PauseSubState extends MusicBeatSubstate
 					curTime = Math.max(0, Conductor.songPosition);
 					updateSkipTimeText();
 				}
+			}**/
+			if(grpMenuShit.members.indexOf(item) == curSelected) {
+				item.color = FlxColor.BLACK;
+				item.borderColor = FlxColor.WHITE;
+			} else if (item.color == FlxColor.BLACK) {
+				item.color = FlxColor.WHITE;
+				item.borderColor = FlxColor.BLACK;
 			}
 		}
 		missingText.visible = false;
@@ -369,7 +415,7 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		for (i in 0...menuItems.length) {
-			var item = new Alphabet(90, 320, menuItems[i], true);
+			/**var item = new Alphabet(90, 320, menuItems[i], true);
 			item.isMenuItem = true;
 			item.targetY = i;
 			grpMenuShit.add(item);
@@ -385,7 +431,28 @@ class PauseSubState extends MusicBeatSubstate
 
 				updateSkipTextStuff();
 				updateSkipTimeText();
+			}**/
+
+			var item = new FlxText(50, 100 + ((menuItems.length >= 5 ? 70 : 110) * i), 0, menuItems[i]);
+			item.setFormat(Paths.font('DonGraffiti.otf'), menuItems.length >= 5 ? 75 : 125, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+			item.scrollFactor.set();
+			item.borderSize = 2;
+			item.active = false;
+			item.alpha = 0;
+			grpMenuShit.add(item);
+
+			if(menuItems[i] == 'Skip Time') {
+				skipTimeText = new FlxText(50, item.y, 0, '');
+				skipTimeText.setFormat(Paths.font('vcr.ttf'), 75, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+				skipTimeText.scrollFactor.set();
+				skipTimeText.borderSize = 2;
+				skipTimeText.active = false;
+				add(skipTimeText);
+
+				updateSkipTextStuff();
+				updateSkipTimeText();
 			}
+			FlxTween.tween(item, { alpha: 1 }, 0.5, { startDelay: 0.3 * i });
 		}
 		curSelected = 0;
 		changeSelection();
@@ -395,8 +462,8 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		if(skipTimeText == null || skipTimeTracker == null) return;
 
-		skipTimeText.x = skipTimeTracker.x + skipTimeTracker.width + 60;
-		skipTimeText.y = skipTimeTracker.y;
+		/**skipTimeText.x = skipTimeTracker.x + skipTimeTracker.width + 60;
+		skipTimeText.y = skipTimeTracker.y;**/
 		skipTimeText.visible = (skipTimeTracker.alpha >= 1);
 	}
 

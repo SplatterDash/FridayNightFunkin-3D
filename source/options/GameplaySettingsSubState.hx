@@ -134,16 +134,16 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		addOption(option);
 
-		var option:Option = new Option('Gameplay Modes',
+		/**var option:Option = new Option('Gameplay Modes',
 			'Feeling bored of the current FNF style? Choose a cool gameplay mode here!\nThis description will change as you change this setting!',
 			'gameplaySpice',
 			'string',
 			['None', 'Perfection Run', 'Oops! All Shit!', 'Record Player', 'Karaoke Night', 'Ghost Notes', 'Blind Side']);
 		curModesOption = option.curOption;
-		/**option.onChange = function() {
+		option.onChange = function() {
 			theDescriptions[curModesOption];
-		}**/
-		addOption(option);
+		}
+		addOption(option);**/
 
 		super();
 	}

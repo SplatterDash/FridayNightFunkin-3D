@@ -10,9 +10,12 @@ import openfl.utils.Assets as OpenFlAssets;
 import objects.HealthIcon;
 import states.editors.ChartingState;
 
-import substates.GameplayChangersSubstate;
+//import substates.GameplayChangersSubstate;
 import substates.ResetScoreSubState;
 import substates.InfoPrompt;
+
+import flixel.graphics.FlxGraphic;
+import flixel.graphics.frames.FlxFramesCollection;
 
 #if MODS_ALLOWED
 import sys.FileSystem;
@@ -21,31 +24,34 @@ import sys.FileSystem;
 class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [
-		new SongMetadata("BreadBank", 1, "3Dami", FlxColor.BLUE),
-		new SongMetadata("Parkour", 1, "3DenDerek", FlxColor.BLUE),
-		new SongMetadata("OffWallet", 1, "3DenDerek", FlxColor.RED),
-		new SongMetadata("TTM (True To Musicality)", 1, "3Dami", FlxColor.BROWN),
-		new SongMetadata("FORREAL", 1, "3Mega", FlxColor.RED),
-		new SongMetadata("20Racks", 2, "3Cock", FlxColor.YELLOW),
-		new SongMetadata("Feelin' Torpid", 3, "3Sharlie", FlxColor.WHITE),
-		//new SongMetadata("uhh uhm uhh umm", 2, "3Mako", FlxColor.GREEN),
-		new SongMetadata("Twin-Z", 4, "3Josie", FlxColor.GRAY),
-		new SongMetadata("ALL OUT!!!", 2, "3Jitterbud", FlxColor.GRAY),
-		new SongMetadata("Phrenic", 5, "3Vester", FlxColor.YELLOW),
-		new SongMetadata("Full House", 2, "3Dami", FlxColor.PINK),
+		new SongMetadata("BreadBank", "3Redacted", "3Dami", FlxColor.BLUE, "It's almost time for the hangout, and 3Dami's scoping the rooftops out with his lover, 3Redacted. Why not have a little fun in the process?"),
+		new SongMetadata("Parkour", "3DenDerek", "3Dami", FlxColor.BLUE, "A little rooftop hangout never hurt anyone, and 3Dami, 3Derek and 3Den are in the mood for some bars up on high. Do well and you'll get some tips from it!"),
+		new SongMetadata("OffWallet", "3DenDerek", "3Dami", FlxColor.RED, "There's a little buzz going around, but you need to kick things up a notch if you wanna get more money!"),
+		new SongMetadata("TTM (True To Musicality)", "3DenDerek", "3Dami", FlxColor.BROWN, "There's a massive gang forming now! Your bills are all good, so why not send up to your roots before seemingly going out for the night?"),
+		new SongMetadata("FORREAL", "3Mega", "3Dami", FlxColor.RED, "What the nuts?! The beatboxing kingpin 3Mega is here - and he has his eyes set on the dough in that hat of yours. You gotta put up a fight if you wanna keep the cash!"),
+		new SongMetadata("20Racks", "3Cock", "3Derek", FlxColor.YELLOW, 'Oh hey look, it\'s that one guy who has like 17 dollars on him or something. Oh, and he wants your payload cause of course.\n3Derek, crush this guy\'s skull.'),
+		new SongMetadata("Feelin' Torpid", "3Sharlie", "3Den", FlxColor.WHITE, "No way, it's 3Sharlie from LazyGoobster! It looks like 3Den has his bars all set up for him - that is, if he can get over his case of Storpid fever..."),
+		new SongMetadata("TwinZ", "3JosieJitterbud", "3DamiDerek", FlxColor.GRAY, "Seems like this 3Josie person wants to spit bars, especially since his friend 3Jitterbud's in an energy burst again. Why not rap out a 2v2?"),
+		new SongMetadata("Citrus Bliss", "3Mako_big", "3Dami", FlxColor.GREEN, "3Mako's coming into town, and everyone's saying he's looking for the 3D crew. It might take more than one person to lay it on him straight!"),
+		//new SongMetadata("ALL OUT!!!", "3Supercharged", "3Dami", FlxColor.GRAY),      we couldn't finish in time for V1... but V2 however ;)
+		new SongMetadata("Phrenic", "3Vester", "3AletoDerek", FlxColor.YELLOW, "Uh oh, looks like 3Derek's girlfriend squared up to the local jackrabbit! Hopefully 3Aleto doesn't make any wrong moves like she did last week with the local jackass..."),
+		//new SongMetadata("Full House", "3Dami", "3Dami", FlxColor.PINK, "The bag and the coin are yours, but hold up - looks like everyone wants to go for one final battle, the 3D crew versus everyone else. Give it your all!"),        ALMOST made it for V1, but we're pushing it back to V2 and making it bigger and better... stay tuned ;)
 	];
 
 	var cashBackSongs:Array<SongMetadata> = [
-		new SongMetadata("FORREAL (Overnighter Remix)", 1, "3Mega", FlxColor.RED),
-		new SongMetadata("Twin-Z (Euphoria Remix)", 4, "3Jitterbud", FlxColor.GRAY),
-		new SongMetadata("Parkour (FREERUNNER Remix)", 1, "3Dami", FlxColor.BLUE),
+		new SongMetadata("FORREAL (Overnighter Remix)", "3MegaCBP", "3Dami", FlxColor.RED, "Spirits of past competitors are showing up after the big hangout happened - and it seems like it's starting strong with the form of the beatboxing kingpin!"),
+		new SongMetadata("TwinZ (Euphoria Remix)", "3JosieJitterbudCBP", "3DamiDerek", FlxColor.GRAY, "The spirits are taking the forms of 3Josie and 3Jitterbud for a 2v1 advantage, but 3Derek's nearby to help you. Shouldn't be that bad of a clean sweep!"),
+		new SongMetadata("Parkour (FREERUNNER Remix)", "3DenDerekCBP", "3Dami", FlxColor.BLUE, "Even your friends aren't safe from the spirits - it's a battle like the hangout, 1v2, 3Derek and 3Den versus 3Dami!"),
 	];
 
 	var curSongsList:Array<SongMetadata>;
 
 	var selector:FlxText;
 	private static var curSelected:Int = 0;
+	private static var curOptSelected:Int = 0;
 	var lerpSelected:Float = 0;
+
+	var lockAt:Int;
 
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
@@ -54,10 +60,14 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 	var intendedRating:Float = 0;
 
-	private var grpSongs:FlxTypedGroup<Alphabet>;
+	private var grpSongs:Map<String, FlxGraphic>;
 	private var curPlaying:Bool = false;
+	private var albumSprite:FlxSprite;
+	private var descriptionText:FlxText;
+	private var arrows:FlxTypedSpriteGroup<FlxSprite>;
+	private var inGameplay:Bool = false;
 
-	private var iconArray:Array<HealthIcon> = [];
+	private var iconArray:FlxTypedSpriteGroup<HealthIcon>;
 
 	var bg:FlxSprite;
 	var intendedColor:Int;
@@ -66,8 +76,12 @@ class FreeplayState extends MusicBeatState
 	var missingTextBG:FlxSprite;
 	var missingText:FlxText;
 
+	private var optionsArray:Array<GameplayOption> = [];
+	var optionsText:FlxTypedGroup<FlxText>;
+
 	public static var cashBackMenu:Bool = false;
 	public static var unlockCash:Bool = false;
+	public static var finalMessage:Bool = false;
 	public var casette:FlxSprite;
 
 	override function create()
@@ -77,10 +91,11 @@ class FreeplayState extends MusicBeatState
 		
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
-		FlxG.mouse.visible = true;
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 
 		curSongsList = cashBackMenu ? cashBackSongs : songs;
-		var lockAt:Int = curSongsList.length;
+
+		lockAt = curSongsList.length;
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -92,56 +107,25 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 
-		grpSongs = new FlxTypedGroup<Alphabet>();
-		add(grpSongs);
+		grpSongs = new Map<String, FlxGraphic>();
+
+		iconArray = new FlxTypedSpriteGroup<HealthIcon>(250, 550);
+		add(iconArray);
+
+		iconArray.add(new HealthIcon(curSongsList[0].songCharacter));
+		iconArray.add(new HealthIcon(curSongsList[0].playerCharacter));
+		iconArray.members[0].x -= 200;
+		iconArray.members[0].flipX = true;
+		iconArray.members[1].x += 200;
+
+		var lockImage:FlxGraphic = Paths.image('albums/locked');
 
 		for (i in 0...curSongsList.length)
 		{
-			//if(Highscore.getScore(Paths.formatToSongPath(curSongsList[i].songName)) == 0 && lockAt == curSongsList.length) 
-				//lockAt = i;
+			if(Highscore.getScore(Paths.formatToSongPath(curSongsList[i].songName)) == 0 && lockAt == curSongsList.length) 
+				lockAt = i;
 
-			if(i > lockAt) {
-				var songText:Alphabet = new Alphabet(90, 320, '?????', true);
-				songText.targetY = i;
-				grpSongs.add(songText);
-
-				songText.scaleX = Math.min(1, 980 / songText.width);
-				songText.snapToPosition();
-
-				var icon:HealthIcon = new HealthIcon('lock');
-				icon.sprTracker = songText;
-				
-				// too laggy with a lot of songs, so i had to recode the logic for it
-				songText.visible = songText.active = songText.isMenuItem = false;
-				icon.visible = icon.active = false;
-
-				// using a FlxGroup is too much fuss!
-				iconArray.push(icon);
-				add(icon);
-			} else {
-				var songText:Alphabet = new Alphabet(90, 320, curSongsList[i].songName, true);
-				songText.targetY = i;
-				grpSongs.add(songText);
-
-				songText.scaleX = Math.min(1, 980 / songText.width);
-				songText.snapToPosition();
-
-				var icon:HealthIcon = new HealthIcon(curSongsList[i].songCharacter);
-				icon.sprTracker = songText;
-
-				
-				// too laggy with a lot of songs, so i had to recode the logic for it
-				songText.visible = songText.active = songText.isMenuItem = false;
-				icon.visible = icon.active = false;
-
-				// using a FlxGroup is too much fuss!
-				iconArray.push(icon);
-				add(icon);
-			}
-
-			// songText.x += 40;
-			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
+			grpSongs.set(curSongsList[i].songName, i > lockAt ? lockImage : Paths.image('albums/${Paths.formatToSongPath(curSongsList[i].songName)}'));
 		}
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
@@ -153,6 +137,78 @@ class FreeplayState extends MusicBeatState
 
 		add(scoreText);
 
+		if(curSelected >= curSongsList.length) curSelected = 0;
+		bg.color = curSongsList[curSelected].color;
+		intendedColor = bg.color;
+		lerpSelected = curSelected;
+
+		albumSprite = new FlxSprite(75, bg.y + (bg.height / 2) - 50);
+		add(albumSprite);
+
+		descriptionText = new FlxText(albumSprite.x + 25, bg.y + 100, 600, '');
+		descriptionText.setFormat('DonGraffiti.otf', 40, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+		add(descriptionText);
+		
+		changeSelection();
+
+		descriptionText.x += albumSprite.width;
+
+		albumSprite.y -= (albumSprite.graphic.height / 2);
+
+		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
+		textBG.alpha = 0.6;
+		add(textBG);
+
+		#if PRELOAD_ALL
+		var leText:String = "Press SPACE to listen to the Song / Press CTRL to switch between Gameplay Changers and Song Selection / Press RESET to Reset your Score and Accuracy";
+		var size:Int = 16;
+		#else
+		var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy";
+		var size:Int = 18;
+		#end
+		if(FlxG.save.data.cashBackUnlocked != null && FlxG.save.data.cashBackUnlocked) leText += ' / Press ALT to switch in/out of the Cash Back songs';
+		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText);
+		text.setFormat(Paths.font("DonGraffiti.otf"), size, FlxColor.WHITE, CENTER);
+		text.scrollFactor.set();
+		add(text);
+
+		if(FlxG.save.data.cashBackUnlocked != null && FlxG.save.data.cashBackUnlocked) {
+			casette = new FlxSprite(1100, 575).loadGraphic(Paths.image('casette', 'shared'));
+			casette.scrollFactor.set(1, 1);
+			add(casette);
+		}
+
+		arrows = new FlxTypedSpriteGroup<FlxSprite>(albumSprite.x + (albumSprite.width / 2), 0);
+		add(arrows);
+
+		var arrowFrames:FlxFramesCollection = Paths.getSparrowAtlas('freeplay-arrows');
+
+		var arrowUp = new FlxSprite(0, albumSprite.y - 50);
+		arrowUp.frames = arrowFrames;
+		arrowUp.animation.addByPrefix('arrow', 'up', 1, false);
+		arrows.add(arrowUp);
+		arrowUp.animation.play('arrow');
+
+		var arrowDown = new FlxSprite(0, albumSprite.y + albumSprite.height + 16);
+		arrowDown.frames = arrowFrames;
+		arrowDown.animation.addByPrefix('arrow', 'down', 1, false);
+		arrows.add(arrowDown);
+		arrowDown.animation.play('arrow');
+
+		arrows.x -= arrows.members[0].width / 2;
+
+		optionsText = new FlxTypedGroup<FlxText>();
+		add(optionsText);
+
+		getOptions();
+
+		for (i in 0...optionsArray.length)
+			{
+				var text:FlxText = new FlxText(albumSprite.x + albumSprite.width + 25, 600 - (35 * (optionsArray.length - (i + 1))), 0, '${optionsArray[i].name}: ${(optionsArray[i].type != 'bool' ? optionsArray[i].displayFormat.replace('%v', optionsArray[i].getValue()) : (!optionsArray[i].getValue() ? "Off" : "On"))}');
+				text.setFormat('DonGraffiti.otf', 30, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+				optionsText.add(text);
+			}
+
 		missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		missingTextBG.alpha = 0.6;
 		missingTextBG.visible = false;
@@ -163,39 +219,7 @@ class FreeplayState extends MusicBeatState
 		missingText.scrollFactor.set();
 		missingText.visible = false;
 		add(missingText);
-
-		if(curSelected >= curSongsList.length) curSelected = 0;
-		bg.color = curSongsList[curSelected].color;
-		intendedColor = bg.color;
-		lerpSelected = curSelected;
 		
-		changeSelection();
-
-		var swag:Alphabet = new Alphabet(1, 0, "swag");
-
-		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
-		textBG.alpha = 0.6;
-		add(textBG);
-
-		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
-		var size:Int = 16;
-		#else
-		var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
-		var size:Int = 18;
-		#end
-		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
-		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
-		text.scrollFactor.set();
-		add(text);
-
-		//if(FlxG.save.data.cashBackUnlocked != null && FlxG.save.data.cashBackUnlocked) {
-			casette = new FlxSprite(1100, 500).loadGraphic(Paths.image('casette', 'shared'));
-			casette.scrollFactor.set(1, 1);
-			add(casette);
-		//}
-		
-		updateTexts();
 		super.create();
 	}
 
@@ -208,9 +232,9 @@ class FreeplayState extends MusicBeatState
 	var instPlaying:Int = -1;
 	public static var vocals:FlxSound = null;
 	var holdTime:Float = 0;
+	var holdValue:Float = 0;
 	override function update(elapsed:Float)
 	{
-		if(!FlxG.mouse.visible) FlxG.mouse.visible = true;
 		if (FlxG.sound.music.volume < 0.7 * ClientPrefs.data.musicVolume)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -219,6 +243,7 @@ class FreeplayState extends MusicBeatState
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, FlxMath.bound(elapsed * 12, 0, 1));
 
 		if(unlockCash) cash();
+		if(finalMessage) finalThing();
 
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
@@ -234,12 +259,14 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		if(casette != null && FlxG.mouse.overlaps(casette)) {
-			if(casette.scale.x == 1) {
-				casette.scale.set(1.1, 1.1);
-				FlxG.sound.play(Paths.sound('scrollMenu'), 0.4 * ClientPrefs.data.soundVolume);
-			}
-		} else if (casette.scale.x == 1.1) casette.scale.set(1, 1);
+		if(casette != null) {
+			if(FlxG.mouse.overlaps(casette) && FlxG.mouse.enabled) {
+				if(casette.scale.x == 1) {
+					casette.scale.set(1.1, 1.1);
+					FlxG.sound.play(Paths.sound('scrollMenu'), 0.4 * ClientPrefs.data.soundVolume);
+				}
+			} else if (casette.scale.x == 1.1) casette.scale.set(1, 1);
+		}
 
 		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
@@ -247,7 +274,7 @@ class FreeplayState extends MusicBeatState
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
-		if(curSongsList.length > 1)
+		if(curSongsList.length > 1 && !inGameplay)
 		{
 			if(FlxG.keys.justPressed.HOME)
 			{
@@ -261,13 +288,17 @@ class FreeplayState extends MusicBeatState
 				changeSelection();
 				holdTime = 0;	
 			}
-			if (controls.UI_UP_P)
+			if (controls.UI_UP_P || (FlxG.mouse.overlaps(arrows.members[0]) && FlxG.mouse.justPressed))
 			{
+				arrows.members[0].alpha = 0.5;
+				arrows.members[0].scale.set(0.7, 0.7);
 				changeSelection(-shiftMult);
 				holdTime = 0;
 			}
-			if (controls.UI_DOWN_P)
+			if (controls.UI_DOWN_P || (FlxG.mouse.overlaps(arrows.members[1]) && FlxG.mouse.justPressed))
 			{
+				arrows.members[1].alpha = 0.5;
+				arrows.members[1].scale.set(0.7, 0.7);
 				changeSelection(shiftMult);
 				holdTime = 0;
 			}
@@ -280,13 +311,210 @@ class FreeplayState extends MusicBeatState
 
 				if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 					changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
+
 			}
 
-			if(FlxG.mouse.wheel != 0)
+			if((controls.UI_UP_R || (FlxG.mouse.justReleased && FlxG.mouse.enabled)) && arrows.members[0].alpha == 0.5) {
+				arrows.members[0].scale.set(FlxG.mouse.overlaps(arrows.members[0]) ? 1.1 : 1, FlxG.mouse.overlaps(arrows.members[0]) ? 1.1 : 1);
+				arrows.members[0].alpha = 1;
+			}
+
+			if((controls.UI_DOWN_R || (FlxG.mouse.justReleased && FlxG.mouse.enabled)) && arrows.members[1].alpha == 0.5) {
+				arrows.members[1].scale.set(FlxG.mouse.overlaps(arrows.members[1]) ? 1.1 : 1, FlxG.mouse.overlaps(arrows.members[1]) ? 1.1 : 1);
+				arrows.members[1].alpha = 1;
+			}
+
+			if(FlxG.mouse.overlaps(albumSprite) && albumSprite.scale.x != 1.1 && !FlxG.mouse.pressed && FlxG.mouse.enabled) {
+				albumSprite.scale.set(1.1, 1.1);
+			}
+				else if (!FlxG.mouse.overlaps(albumSprite) && albumSprite.scale.x != 1 && !FlxG.mouse.pressed && FlxG.mouse.enabled) 
+					albumSprite.scale.set(1, 1);
+
+			if(FlxG.mouse.wheel != 0 && FlxG.mouse.enabled)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'), 0.2 * ClientPrefs.data.soundVolume);
 				changeSelection(-shiftMult * FlxG.mouse.wheel, false);
 			}
+
+			if(FlxG.mouse.overlaps(arrows.members[0]) && !FlxG.mouse.pressed && arrows.members[0].scale.x != 1.1 && FlxG.mouse.enabled)
+				arrows.members[0].scale.set(1.1, 1.1)
+
+			else if (!FlxG.mouse.overlaps(arrows.members[0]) && !controls.UI_UP && arrows.members[0].scale.x != 1 && FlxG.mouse.enabled) 
+				arrows.members[0].scale.set(1, 1);
+	
+			if(FlxG.mouse.overlaps(arrows.members[1]) && !FlxG.mouse.pressed && arrows.members[1].scale.x != 1.1 && FlxG.mouse.enabled)
+				arrows.members[1].scale.set(1.1, 1.1)
+
+			else if (!FlxG.mouse.overlaps(arrows.members[1]) && !controls.UI_DOWN && arrows.members[1].scale.x != 1 && FlxG.mouse.enabled) 
+				arrows.members[1].scale.set(1, 1);
+
+			else if (controls.ACCEPT && !FlxG.keys.justPressed.SPACE) acceptSong()
+			else if(controls.RESET)
+			{
+				if (curSelected <= lockAt) {
+					persistentUpdate = false;
+					openSubState(new ResetScoreSubState(curSongsList[curSelected].songName, curSongsList[curSelected].songCharacter));
+					FlxG.sound.play(Paths.sound('scrollMenu'), 1 * ClientPrefs.data.soundVolume);
+				}
+				
+			}
+		} else if (inGameplay) {
+			if (controls.UI_UP_P)
+				{
+					changeOptionSelection(-shiftMult);
+					holdTime = 0;
+				}
+				if (controls.UI_DOWN_P)
+				{
+					changeOptionSelection(shiftMult);
+					holdTime = 0;
+				}
+	
+				if(controls.UI_DOWN || controls.UI_UP)
+				{
+					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
+					holdTime += elapsed;
+					var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
+	
+					if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
+						changeOptionSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
+	
+				}
+
+			if(controls.UI_LEFT || controls.UI_RIGHT) {
+				var curOption:GameplayOption = optionsArray[curOptSelected];
+				var pressed = (controls.UI_LEFT_P || controls.UI_RIGHT_P);
+				if(holdTime > 0.5 || pressed) {
+					if(pressed) {
+						var add:Dynamic = null;
+						if(curOption.type != 'string') {
+							add = controls.UI_LEFT ? -curOption.changeValue : curOption.changeValue;
+						}
+
+						switch(curOption.type)
+						{
+							case 'int' | 'float' | 'percent':
+								holdValue = curOption.getValue() + add;
+								if(holdValue < curOption.minValue) holdValue = curOption.minValue;
+								else if (holdValue > curOption.maxValue) holdValue = curOption.maxValue;
+
+								switch(curOption.type)
+								{
+									case 'int':
+										holdValue = Math.round(holdValue);
+										curOption.setValue(holdValue);
+
+									case 'float' | 'percent':
+										holdValue = FlxMath.roundDecimal(holdValue, curOption.decimals);
+										curOption.setValue(holdValue);
+								}
+
+							case 'string':
+								var num:Int = curOption.curOption; //lol
+								if(controls.UI_LEFT_P) --num;
+								else num++;
+
+								if(num < 0) {
+									num = curOption.options.length - 1;
+								} else if(num >= curOption.options.length) {
+									num = 0;
+								}
+
+								curOption.curOption = num;
+								curOption.setValue(curOption.options[num]); //lol
+								
+								if (curOption.name == "Scroll Type")
+								{
+									var oOption:GameplayOption = getOptionByName("Scroll Speed");
+									if (oOption != null)
+									{
+										if (curOption.getValue() == "constant")
+										{
+											oOption.displayFormat = "%v";
+											oOption.maxValue = 6;
+										}
+										else
+										{
+											oOption.displayFormat = "%vX";
+											oOption.maxValue = 3;
+											if(oOption.getValue() > 3) oOption.setValue(3);
+										}
+										oOption.text = '${oOption.name}: ${oOption.type != 'bool' ? oOption.displayFormat.replace('%v', oOption.getValue()) : (!oOption.getValue() ? "Off" : "On")}';
+									}
+								}
+								//trace(curOption.options[num]);
+
+							case "bool":
+								curOption.setValue(!curOption.getValue());
+						}
+						curOption.change();
+						FlxG.sound.play(Paths.sound('scrollMenu'), 1 * ClientPrefs.data.soundVolume);
+					} else if(curOption.type != 'string') {
+						holdValue = Math.max(curOption.minValue, Math.min(curOption.maxValue, holdValue + curOption.scrollSpeed * elapsed * (controls.UI_LEFT ? -1 : 1)));
+
+						switch(curOption.type)
+						{
+							case 'int':
+								curOption.setValue(Math.round(holdValue));
+							
+							case 'float' | 'percent':
+								var blah:Float = Math.max(curOption.minValue, Math.min(curOption.maxValue, holdValue + curOption.changeValue - (holdValue % curOption.changeValue)));
+								curOption.setValue(FlxMath.roundDecimal(blah, curOption.decimals));
+						}
+						curOption.change();
+					}
+				}
+
+				if(curOption.type != 'string') {
+					holdTime += elapsed;
+				}
+				optionsText.members[curOptSelected].text = '${curOption.name}: ${curOption.type != 'bool' ? curOption.displayFormat.replace('%v', curOption.getValue()) : (!curOption.getValue() ? "Off" : "On")}';
+			} else if(controls.UI_LEFT_R || controls.UI_RIGHT_R) {
+					if(holdTime > 0.5) {
+						FlxG.sound.play(Paths.sound('scrollMenu'), 1 * ClientPrefs.data.soundVolume);
+					}
+					holdTime = 0;
+			}
+
+			if(controls.RESET)
+				{
+					for (i in 0...optionsArray.length)
+					{
+						var leOption:GameplayOption = optionsArray[i];
+						leOption.setValue(leOption.defaultValue);
+						if(leOption.type != 'bool')
+						{
+							if(leOption.type == 'string')
+							{
+								leOption.curOption = leOption.options.indexOf(leOption.getValue());
+							}
+						}
+	
+						if(leOption.name == 'Scroll Speed')
+						{
+							leOption.displayFormat = "%vX";
+							leOption.maxValue = 3;
+							if(leOption.getValue() > 3)
+							{
+								leOption.setValue(3);
+							}
+						}
+						optionsText.members[i].text = '${leOption.name}: ${leOption.type != 'bool' ? leOption.displayFormat.replace('%v', leOption.getValue()) : (!leOption.getValue() ? "Off" : "On")}';
+						leOption.change();
+					}
+					FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
+				}
+		}
+
+		if(FlxG.keys.justPressed.CONTROL) {
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.4 * ClientPrefs.data.soundVolume);
+			inGameplay = !inGameplay;
+			changeOptionSelection();
+		}
+
+		if(FlxG.keys.justPressed.ALT) {
+			FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
+			switchMenus();
 		}
 
 		if (controls.BACK)
@@ -299,14 +527,19 @@ class FreeplayState extends MusicBeatState
 			if(cashBackMenu) switchMenus() else MusicBeatState.switchState(new MainMenuState());
 		}
 
-		if(FlxG.keys.justPressed.CONTROL)
-		{
-			persistentUpdate = false;
-			openSubState(new GameplayChangersSubstate());
+		if(((FlxG.mouse.overlaps(albumSprite) && albumSprite.scale.x != 1.1) || (FlxG.mouse.overlaps(arrows.members[0]) && arrows.members[0].scale.x != 1.1) || (FlxG.mouse.overlaps(arrows.members[1]) && arrows.members[1].scale.x != 1.1)) && !FlxG.mouse.pressed && FlxG.mouse.enabled) {
+			inGameplay = false;
+			changeOptionSelection();
 		}
+		for(member in optionsText.members) if (FlxG.mouse.overlaps(member) && (curOptSelected != optionsText.members.indexOf(member) || !inGameplay) && member.color != FlxColor.BLACK) {
+			curOptSelected = optionsText.members.indexOf(member);
+			inGameplay = true;
+			changeOptionSelection();
+		}
+
 		else if(FlxG.keys.justPressed.SPACE)
 		{
-			if(grpSongs.members[curSelected].text != '?????') {
+			if(curSelected <= lockAt) {
 				if(instPlaying != curSelected)
 					{
 						#if PRELOAD_ALL
@@ -331,26 +564,22 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		else if (FlxG.mouse.justPressed) {
-			if(FlxG.mouse.overlaps(casette)) switchMenus();
+		if (FlxG.mouse.justPressed && FlxG.mouse.enabled) {
+			if(casette != null && FlxG.mouse.overlaps(casette)) {
+				FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
+				switchMenus();
+			}
+			else if(FlxG.mouse.overlaps(albumSprite)) acceptSong();
 		}
+		super.update(elapsed);
+	}
 
-		else if (controls.ACCEPT)
+	public function acceptSong()
 		{
-			if(grpSongs.members[curSelected].text != '?????') {
+			if(curSelected <= lockAt) {
 				persistentUpdate = false;
 				var songLowercase:String = Paths.formatToSongPath(curSongsList[curSelected].songName);
 				var poop:String = Highscore.formatSong(songLowercase);
-				/*#if MODS_ALLOWED
-				if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
-				#else
-				if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
-				#end
-					poop = songLowercase;
-					curDifficulty = 1;
-					trace('Couldnt find file');
-				}*/
-				//trace(poop);
 
 				try
 				{
@@ -373,11 +602,10 @@ class FreeplayState extends MusicBeatState
 					missingTextBG.visible = true;
 					FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
 
-					updateTexts(elapsed);
-					super.update(elapsed);
+					persistentUpdate = true;
 					return;
 				}
-				LoadingState.loadAndSwitchState(new PlayState());
+				MusicBeatState.switchState(new PlayState());
 
 				FlxG.sound.music.volume = 0;
 						
@@ -385,22 +613,9 @@ class FreeplayState extends MusicBeatState
 			} else {
 				persistentUpdate = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
-				openSubState(new InfoPrompt('LOCKED!\n\nComplete "${grpSongs.members[curSelected - 1].text}" in Normal mode to unlock this song!'));
+				openSubState(new InfoPrompt('LOCKED!\n\nComplete "${(curSelected > (lockAt + 1)) ? '??????' : curSongsList[curSelected - 1].songName}" in Normal mode to unlock this song!'));
 			}
 		}
-		else if(controls.RESET)
-		{
-			if (grpSongs.members[curSelected].text != '?????') {
-				persistentUpdate = false;
-				openSubState(new ResetScoreSubState(curSongsList[curSelected].songName, curSongsList[curSelected].songCharacter));
-				FlxG.sound.play(Paths.sound('scrollMenu'), 1 * ClientPrefs.data.soundVolume);
-			}
-			
-		}
-
-		updateTexts(elapsed);
-		super.update(elapsed);
-	}
 
 	public static function destroyFreeplayVocals() {
 		if(vocals != null) {
@@ -412,7 +627,7 @@ class FreeplayState extends MusicBeatState
 
 	function changeSelection(change:Int = 0, playSound:Bool = true)
 	{
-		if(playSound) FlxG.sound.play(Paths.sound('scrollMenu'), 0.4 * ClientPrefs.data.soundVolume);
+		if(playSound) FlxG.sound.play(Paths.sound('scrollMenu'), 0.5 * ClientPrefs.data.soundVolume);
 
 		curSelected += change;
 
@@ -439,25 +654,37 @@ class FreeplayState extends MusicBeatState
 
 		// selector.y = (70 * curSelected) + 30;
 
-		var bullShit:Int = 0;
-
-		for (i in 0...iconArray.length)
-		{
-			iconArray[i].alpha = 0.6;
-		}
-
-		iconArray[curSelected].alpha = 1;
-
-		for (item in grpSongs.members)
-		{
-			bullShit++;
-			item.alpha = 0.6;
-			if (item.targetY == curSelected)
-				item.alpha = 1;
-		}
-		
-		PlayState.storyWeek = curSongsList[curSelected].week;
+		iconArray.members[0].changeIcon(curSongsList[curSelected].songCharacter);
+		iconArray.members[1].changeIcon(curSongsList[curSelected].playerCharacter);
+		if(curSelected > lockAt) {
+			if(iconArray.members[0].alpha == 1) for(member in iconArray.members) member.alpha = 0;
+			descriptionText.text = '?????';
+			 } else {
+				if(iconArray.members[0].alpha == 0) for(member in iconArray.members) member.alpha = 1;
+				descriptionText.text = curSongsList[curSelected].description != '' ? curSongsList[curSelected].description : "Guys Splatter worked hard coding this freeplay menu please don't break it pLEASE-";
+			 }
+		albumSprite.loadGraphic(grpSongs.get(curSongsList[curSelected].songName));
 	}
+
+	function changeOptionSelection(change:Int = 0)
+		{
+			curOptSelected += change;
+			if (curOptSelected < 0)
+				curOptSelected = optionsArray.length - 1;
+			if (curOptSelected >= optionsArray.length)
+				curOptSelected = 0;
+	
+			for(i in 0...optionsText.members.length) {
+				if(i == curOptSelected && inGameplay) {
+					optionsText.members[i].borderColor = FlxColor.WHITE;
+					optionsText.members[i].color = FlxColor.BLACK;
+				} else {
+					optionsText.members[i].borderColor = FlxColor.BLACK;
+					optionsText.members[i].color = FlxColor.WHITE;
+				}
+			}
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.5 * ClientPrefs.data.soundVolume);
+		}
 
 	private function positionHighscore() {
 		scoreText.x = FlxG.width - scoreText.width - 6;
@@ -466,7 +693,6 @@ class FreeplayState extends MusicBeatState
 	}
 
 	private function switchMenus() {
-		FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
 		cashBackMenu = !cashBackMenu;
 		curSelected = 0;
 		MusicBeatState.switchState(new FreeplayState());
@@ -474,35 +700,14 @@ class FreeplayState extends MusicBeatState
 
 	private function cash() {
 		FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
-		openSubStateSpecial(new substates.InfoPrompt("UNLOCKED CASH BACK PACK!\n\nTo swap between the pack and the other songs, select the cassette tape on the bottom right hand corner of the Freeplay menu."));
+		openSubStateSpecial(new substates.InfoPrompt("UNLOCKED CASH BACK PACK!\n\nTo swap between the pack and the other songs, select the cassette tape on the bottom right hand corner of the Freeplay menu or press ALT on the Freeplay menu."));
 		unlockCash = false;
 	}
 
-	var _drawDistance:Int = 4;
-	var _lastVisibles:Array<Int> = [];
-	public function updateTexts(elapsed:Float = 0.0)
-	{
-		lerpSelected = FlxMath.lerp(lerpSelected, curSelected, FlxMath.bound(elapsed * 9.6, 0, 1));
-		for (i in _lastVisibles)
-		{
-			grpSongs.members[i].visible = grpSongs.members[i].active = false;
-			iconArray[i].visible = iconArray[i].active = false;
-		}
-		_lastVisibles = [];
-
-		var min:Int = Math.round(Math.max(0, Math.min(curSongsList.length, lerpSelected - _drawDistance)));
-		var max:Int = Math.round(Math.max(0, Math.min(curSongsList.length, lerpSelected + _drawDistance)));
-		for (i in min...max)
-		{
-			var item:Alphabet = grpSongs.members[i];
-			item.visible = item.active = true;
-			item.x = ((item.targetY - lerpSelected) * item.distancePerItem.x) + item.startPosition.x;
-			item.y = ((item.targetY - lerpSelected) * 1.3 * item.distancePerItem.y) + item.startPosition.y;
-
-			var icon:HealthIcon = iconArray[i];
-			icon.visible = icon.active = true;
-			_lastVisibles.push(i);
-		}
+	private function finalThing() {
+		FlxG.sound.play(Paths.sound('confirmMenu'), 1 * ClientPrefs.data.soundVolume);
+		openSubStateSpecial(new substates.InfoPrompt("THANK YOU FOR PLAYING 3D V1!\n\nWe hope you enjoyed playing through the mod and we'll see you for Vs Dami in 2024 (and maybe a potential V2 of 3D in the future...)"));
+		finalMessage = false;
 	}
 
 	public function openSubStateSpecial(subState:flixel.FlxSubState) {
@@ -511,23 +716,195 @@ class FreeplayState extends MusicBeatState
 		openSubState(subState);
 	}
 
+	function getOptions()
+		{
+			var goption:GameplayOption = new GameplayOption('Scroll Type', 'scrolltype', 'string', 'multiplicative', ["multiplicative", "constant"]);
+			optionsArray.push(goption);
+	
+			var option:GameplayOption = new GameplayOption('Scroll Speed', 'scrollspeed', 'float', 1);
+			option.scrollSpeed = 2.0;
+			option.minValue = 0.35;
+			option.changeValue = 0.05;
+			option.decimals = 2;
+			if (goption.getValue() != "constant")
+			{
+				option.displayFormat = '%vX';
+				option.maxValue = 3;
+			}
+			else
+			{
+				option.displayFormat = "%v";
+				option.maxValue = 6;
+			}
+			optionsArray.push(option);
+	
+			#if !html5
+			var option:GameplayOption = new GameplayOption('Playback Rate', 'songspeed', 'float', 1);
+			option.scrollSpeed = 1;
+			option.minValue = 0.5;
+			option.maxValue = 3.0;
+			option.changeValue = 0.05;
+			option.displayFormat = '%vX';
+			option.decimals = 2;
+			optionsArray.push(option);
+			#end
+	
+			var option:GameplayOption = new GameplayOption('Health Gain Multiplier', 'healthgain', 'float', 1);
+			option.scrollSpeed = 2.5;
+			option.minValue = 0;
+			option.maxValue = 5;
+			option.changeValue = 0.1;
+			option.displayFormat = '%vX';
+			optionsArray.push(option);
+	
+			var option:GameplayOption = new GameplayOption('Health Loss Multiplier', 'healthloss', 'float', 1);
+			option.scrollSpeed = 2.5;
+			option.minValue = 0.5;
+			option.maxValue = 5;
+			option.changeValue = 0.1;
+			option.displayFormat = '%vX';
+			optionsArray.push(option);
+	
+			var option:GameplayOption = new GameplayOption('Instakill on Miss', 'instakill', 'bool', false);
+			optionsArray.push(option);
+	
+			var option:GameplayOption = new GameplayOption('Practice Mode', 'practice', 'bool', false);
+			optionsArray.push(option);
+	
+			var option:GameplayOption = new GameplayOption('Botplay', 'botplay', 'bool', false);
+			optionsArray.push(option);
+		}
 
+		public function getOptionByName(name:String)
+			{
+				for(i in optionsArray)
+				{
+					var opt:GameplayOption = i;
+					if (opt.name == name)
+						return opt;
+				}
+				return null;
+			}
 }
 
 class SongMetadata
 {
 	public var songName:String = "";
-	public var week:Int = 0;
+	public var playerCharacter:String = "";
 	public var songCharacter:String = "";
 	public var color:Int = -7179779;
-	public var folder:String = "";
+	public var description:String = "";
 
-	public function new(song:String, week:Int, songCharacter:String, color:Int)
+	public function new(song:String, songCharacter:String, playerCharacter:String, color:Int, ?description:String)
 	{
 		this.songName = song;
-		this.week = week;
+		this.playerCharacter = playerCharacter;
 		this.songCharacter = songCharacter;
 		this.color = color;
-		if(this.folder == null) this.folder = '';
+		if(description != null) this.description = description;
+	}
+}
+
+class GameplayOption
+{
+	public var text:String;
+	public var onChange:Void->Void = null; //Pressed enter (on Bool type options) or pressed/held left/right (on other types)
+
+	public var type(get, default):String = 'bool'; //bool, int (or integer), float (or fl), percent, string (or str)
+	// Bool will use checkboxes
+	// Everything else will use a text
+
+	public var scrollSpeed:Float = 50; //Only works on int/float, defines how fast it scrolls per second while holding left/right
+
+	private var variable:String = null; //Variable from ClientPrefs.hx's gameplaySettings
+	public var defaultValue:Dynamic = null;
+
+	public var curOption:Int = 0; //Don't change this
+	public var options:Array<String> = null; //Only used in string type
+	public var changeValue:Dynamic = 1; //Only used in int/float/percent type, how much is changed when you PRESS
+	public var minValue:Dynamic = null; //Only used in int/float/percent type
+	public var maxValue:Dynamic = null; //Only used in int/float/percent type
+	public var decimals:Int = 1; //Only used in float/percent type
+
+	public var displayFormat:String = '%v'; //How String/Float/Percent/Int values are shown, %v = Current value, %d = Default value
+	public var name:String = 'Unknown';
+
+	public function new(name:String, variable:String, type:String = 'bool', defaultValue:Dynamic = 'null variable value', ?options:Array<String> = null)
+	{
+		this.name = name;
+		this.variable = variable;
+		this.type = type;
+		this.defaultValue = defaultValue;
+		this.options = options;
+
+		if(defaultValue == 'null variable value')
+		{
+			switch(type)
+			{
+				case 'bool':
+					defaultValue = false;
+				case 'int' | 'float':
+					defaultValue = 0;
+				case 'percent':
+					defaultValue = 1;
+				case 'string':
+					defaultValue = '';
+					if(options.length > 0) {
+						defaultValue = options[0];
+					}
+			}
+		}
+
+		if(getValue() == null) {
+			setValue(defaultValue);
+		}
+
+		switch(type)
+		{
+			case 'string':
+				var num:Int = options.indexOf(getValue());
+				if(num > -1) {
+					curOption = num;
+				}
+	
+			case 'percent':
+				displayFormat = '%v%';
+				changeValue = 0.01;
+				minValue = 0;
+				maxValue = 1;
+				scrollSpeed = 0.5;
+				decimals = 2;
+		}
+	}
+
+	public function change()
+	{
+		//nothing lol
+		if(onChange != null) {
+			onChange();
+		}
+	}
+
+	public function getValue():Dynamic
+	{
+		return ClientPrefs.data.gameplaySettings.get(variable);
+	}
+	public function setValue(value:Dynamic)
+	{
+		ClientPrefs.data.gameplaySettings.set(variable, value);
+	}
+
+	private function get_type()
+	{
+		var newValue:String = 'bool';
+		switch(type.toLowerCase().trim())
+		{
+			case 'int' | 'float' | 'percent' | 'string': newValue = type;
+			case 'integer': newValue = 'int';
+			case 'str': newValue = 'string';
+			case 'fl': newValue = 'float';
+		}
+		type = newValue;
+		return type;
 	}
 }

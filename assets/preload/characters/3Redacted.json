@@ -8,7 +8,7 @@
 			],
 			"anim": "danceLeft",
 			"fps": 24,
-			"name": "3Redacted",
+			"name": "idle",
 			"indices": [
 				0,
 				1,
@@ -50,7 +50,7 @@
 			],
 			"anim": "danceRight",
 			"fps": 24,
-			"name": "3Redacted",
+			"name": "idle",
 			"indices": [
 				1,
 				2,
@@ -83,24 +83,68 @@
 				29,
 				30
 			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				1
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				6,
+				1
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				6,
+				1
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				6,
+				1
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/3Redacted",
 	"position": [
-		100,
-		-50
+		70,
+		-60
 	],
 	"healthicon": "3Redacted",
 	"flip_x": false,
 	"healthbar_colors": [
-		175,
-		140,
-		186
+		137,
+		87,
+		162
 	],
 	"camera_position": [
-		-360,
-		220
+		-380,
+		90
 	],
 	"sing_duration": 4,
 	"scale": 0.9

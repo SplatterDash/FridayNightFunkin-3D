@@ -60,11 +60,61 @@
 				-2,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "3Josie idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "danceLeft-alt",
+			"fps": 12,
+			"name": "3Josie sex",
+			"indices": [
+				0,
+				1
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "danceRight-alt",
+			"fps": 12,
+			"name": "3Josie sex",
+			"indices": [
+				2,
+				3
+			]
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "theFuck",
+			"indices": [
+				1,
+				2,
+				4,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				11
+			],
+			"name": "3Josie whatthefuck"
 		},
 		{
 			"offsets": [
@@ -72,7 +122,7 @@
 				0
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 6,
 			"anim": "clearthroat",
 			"loop": false,
 			"name": "3Josie clear throat"
@@ -81,20 +131,20 @@
 	"no_antialiasing": true,
 	"image": "characters/3Josie",
 	"position": [
-		-940,
-		-590
+		-220,
+		-10
 	],
 	"healthicon": "3Josie",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
-		255,
-		255,
-		255
+		71,
+		57,
+		143
 	],
 	"camera_position": [
-		755,
-		590
+		65,
+		30
 	],
 	"sing_duration": 4,
-	"scale": 0.45
+	"scale": 1
 }

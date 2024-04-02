@@ -12,7 +12,7 @@ class OutlineShader extends flixel.system.FlxAssets.FlxShader
         void main()
         {
             vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
-            if(color.r > 0.0 || color.g > 0.0 || color.b > 0.0 || color.a == 0.0) {
+            if(color.r > 0.01 || color.g > 0.01 || color.b > 0.01 || color.a == 0.0) {
                 gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
                 return;
             } else {

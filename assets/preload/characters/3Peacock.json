@@ -1,78 +1,78 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				215,
 				234
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 12,
-			"name": "3Peacock idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "3Peacock idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				260,
 				236
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 12,
-			"name": "3Peacock SING DOWN",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "3Peacock SING DOWN"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				218,
 				217
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 12,
-			"name": "3Peacock SING UP",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "3Peacock SING UP"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				252,
 				240
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 12,
-			"name": "3Peacock SING RIGHT",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "3Peacock SING RIGHT"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				205,
 				237
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 12,
-			"name": "3Peacock SING LEFT",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "3Peacock SING LEFT"
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/3Peacock",
 	"position": [
-		-550,
-		-410
+		170,
+		210
 	],
 	"healthicon": "3Cock",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
-		255,
-		123
+		223,
+		109
 	],
 	"camera_position": [
-		320,
-		530
+		-310,
+		-90
 	],
 	"sing_duration": 4,
-	"scale": 0.43
+	"scale": 1
 }

@@ -50,6 +50,8 @@ class MainMenuState extends MusicBeatState
 		camAchievement = new FlxCamera();
 		camAchievement.bgColor.alpha = 0;
 
+		FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
+
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camAchievement, false);
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
@@ -66,6 +68,7 @@ class MainMenuState extends MusicBeatState
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
 		bg.screenCenter();
+		bg.active = false;
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -115,7 +118,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 		}
 
-		FlxG.camera.follow(camFollow, null, 0);
+		FlxG.camera.follow(camFollow, null, 1);
 
 		var campaignScore = new FlxText(FlxG.width, 5, 0, "CAMPAIGN SCORE: " + backend.Highscore.getWeekScore(), 32);
 		campaignScore.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
@@ -155,7 +158,8 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * elapsed;
 			if(FreeplayState.vocals != null) FreeplayState.vocals.volume += 0.5 * elapsed;
 		}
-		FlxG.camera.followLerp = FlxMath.bound(elapsed * 9 / (FlxG.updateFramerate / 60), 0, 1);
+		FlxG.camera.followLerp = FlxMath.bound((elapsed * (FlxG.updateFramerate / 60)) * 9, 0, 1);
+		// psych what were you doing in the original code of this pepeHands
 
 		if(tutorialComplete) checkIt();
 
@@ -175,6 +179,18 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
+			if(FlxG.mouse.wheel != 0 && FlxG.mouse.enabled)
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'), 0.2 * ClientPrefs.data.soundVolume);
+				changeItem(FlxG.mouse.wheel);
+			}
+
+			for(member in menuItems.members) if(FlxG.mouse.overlaps(member) && FlxG.mouse.enabled && curSelected != member.ID) {
+				curSelected = member.ID;
+				FlxG.sound.play(Paths.sound('scrollMenu'), 0.2 * ClientPrefs.data.soundVolume);
+				changeItem(0);
+			}
+
 			if (controls.BACK)
 			{
 				selectedSomethin = true;
@@ -188,7 +204,7 @@ class MainMenuState extends MusicBeatState
 					//FlxG.sound.play(Paths.sound('scrollMenu'));
 				}
 
-			if (controls.ACCEPT)
+			if (controls.ACCEPT || (FlxG.mouse.justPressed && FlxG.mouse.enabled))
 			{
 				if (optionShit[curSelected] == 'freeplay' && (!FlxG.save.data.weekCompleted || FlxG.save.data.weekCompleted == null))
 				{
@@ -229,7 +245,7 @@ class MainMenuState extends MusicBeatState
 										var leWeek:Array<Dynamic> = [
 											['Parkour', '3Derek', [127, 127, 255]],
 											['OffWallet', '3Derek', [255, 0, 0]],
-											['TTM (True To Musicality)', '3DerekTTM', [0, 0, 255]]
+											['TTM (True To Musicality)', '3Derek', [0, 0, 255]]
 										];
 										for (i in 0...leWeek.length) {
 											songArray.push(leWeek[i][0]);
@@ -252,20 +268,20 @@ class MainMenuState extends MusicBeatState
 											trace('ERROR! $e');
 											return;
 										}
-										FlxG.sound.music.fadeOut(1, 0);
+										FlxG.sound.music.fadeOut(0.8, 0);
 										FlxG.camera.fade(FlxColor.BLACK, 1);
 										
 										new FlxTimer().start(1, function(tmr:FlxTimer)
 										{
 											flixel.addons.transition.FlxTransitionableState.skipNextTransIn = true;
-											LoadingState.loadAndSwitchState(new PlayState(), true);
+											MusicBeatState.switchState(new PlayState());
 										});
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
-										LoadingState.loadAndSwitchState(new OptionsState());
+										MusicBeatState.switchState(new OptionsState());
 										OptionsState.onPlayState = false;
 										if (PlayState.SONG != null)
 										{

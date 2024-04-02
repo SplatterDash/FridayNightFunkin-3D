@@ -60,10 +60,10 @@
 				202,
 				225
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "mock",
-			"loop": false,
+			"indices": [],
 			"name": "3Sylvester mockery"
 		},
 		{
@@ -71,30 +71,46 @@
 				260,
 				240
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "hurt",
-			"loop": false,
+			"indices": [],
 			"name": "3Sylvester hit"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				230,
+				190
+			],
+			"anim": "laugh",
+			"fps": 12,
+			"name": "3Sylvester mockery",
+			"indices": [
+				47,
+				48,
+				49,
+				50
+			]
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/3Sylvester",
 	"position": [
-		-690,
-		-950
+		-20,
+		-170
 	],
 	"healthicon": "3Vester",
 	"flip_x": true,
 	"healthbar_colors": [
 		255,
-		255,
+		208,
 		0
 	],
 	"camera_position": [
-		230,
-		680
+		-310,
+		-120
 	],
 	"sing_duration": 3,
-	"scale": 0.5
+	"scale": 1
 }

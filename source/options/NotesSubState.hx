@@ -50,6 +50,7 @@ class NotesSubState extends MusicBeatSubstate
 
 	public function new() {
 		super();
+		FlxG.mouse.enabled = FlxG.mouse.visible = true;
 		
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.color = 0xFFEA71FD;
@@ -182,6 +183,7 @@ class NotesSubState extends MusicBeatSubstate
 		if (controls.BACK) {
 			FlxG.mouse.visible = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1 * ClientPrefs.data.soundVolume);
+			FlxG.mouse.enabled = FlxG.mouse.visible = ClientPrefs.data.mouseOnMenu;
 			close();
 			return;
 		}

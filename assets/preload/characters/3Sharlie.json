@@ -1,87 +1,87 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-2,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-89
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				28,
 				56
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				77,
 				22
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-88,
 				59
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "left",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				14,
 				60
 			],
-			"anim": "ImSharlie",
+			"loop": false,
 			"fps": 24,
-			"name": "imsharlie",
-			"indices": []
+			"anim": "ImSharlie",
+			"indices": [],
+			"name": "imsharlie"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				-85,
 				5
 			],
-			"anim": "scared",
+			"loop": true,
 			"fps": 24,
-			"name": "scared",
-			"indices": []
+			"anim": "scared",
+			"indices": [],
+			"name": "scared"
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/3Sharlie",
 	"position": [
-		-90,
+		-20,
 		70
 	],
 	"healthicon": "3Sharlie",
@@ -92,7 +92,7 @@
 		255
 	],
 	"camera_position": [
-		75,
+		-105,
 		90
 	],
 	"sing_duration": 4,

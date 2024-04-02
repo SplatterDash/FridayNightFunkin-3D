@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="3Dami.png">
+<SubTexture name="move0000" x="0" y="0" width="267" height="431" frameX="-101" frameY="-11" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0001" x="267" y="0" width="281" height="423" frameX="-93" frameY="-19" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0002" x="548" y="0" width="271" height="427" frameX="-98" frameY="-15" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0003" x="0" y="431" width="268" height="429" frameX="-100" frameY="-13" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0004" x="0" y="431" width="268" height="429" frameX="-100" frameY="-13" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0005" x="268" y="431" width="267" height="430" frameX="-101" frameY="-12" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0006" x="535" y="431" width="267" height="430" frameX="-101" frameY="-12" frameWidth="450" frameHeight="450" />
+<SubTexture name="move0007" x="0" y="861" width="267" height="431" frameX="-101" frameY="-11" frameWidth="450" frameHeight="450" />
+</TextureAtlas>

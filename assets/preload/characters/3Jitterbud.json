@@ -3,8 +3,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-2,
-				0
+				6,
+				99
 			],
 			"anim": "idle",
 			"fps": 12,
@@ -12,20 +12,9 @@
 			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
-				0,
-				0
-			],
-			"anim": "hey",
-			"fps": 12,
-			"name": "3Jitterbud Hey",
-			"indices": []
-		},
-		{
-			"offsets": [
-				-20,
-				0
+				20,
+				100
 			],
 			"loop": false,
 			"fps": 12,
@@ -35,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				1,
-				-2
+				21,
+				88
 			],
 			"loop": false,
 			"fps": 12,
@@ -47,7 +36,7 @@
 		{
 			"offsets": [
 				3,
-				2
+				102
 			],
 			"loop": false,
 			"fps": 12,
@@ -57,8 +46,8 @@
 		},
 		{
 			"offsets": [
-				-3,
-				87
+				17,
+				107
 			],
 			"loop": false,
 			"fps": 12,
@@ -69,32 +58,89 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				115
+				15,
+				109
 			],
 			"anim": "laugh",
 			"fps": 12,
 			"name": "3Jitterbud funny",
 			"indices": []
+		},
+		{
+			"offsets": [
+				30,
+				100
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "danceLeft-alt",
+			"indices": [
+				0,
+				1
+			],
+			"name": "3Jitterbud jiggy"
+		},
+		{
+			"offsets": [
+				10,
+				110
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "danceRight-alt",
+			"indices": [
+				2,
+				3
+			],
+			"name": "3Jitterbud jiggy"
+		},
+		{
+			"offsets": [
+				10,
+				100
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "winky",
+			"indices": [],
+			"name": "3Jitterbud sex face"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "hey",
+			"fps": 12,
+			"name": "3Jitterbud Hey",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				3,
+				3
+			]
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/3Jitterbud",
 	"position": [
-		-900,
-		-310
+		-220,
+		250
 	],
 	"healthicon": "3Jitterbud",
 	"flip_x": false,
 	"healthbar_colors": [
-		120,
-		120,
-		255
+		91,
+		124,
+		181
 	],
 	"camera_position": [
-		755,
-		490
+		-95,
+		-110
 	],
 	"sing_duration": 4,
-	"scale": 0.4
+	"scale": 1
 }

@@ -1,31 +1,108 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				271,
-				76
-			],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				250,
-				247
-			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"offsets": [
-				245,
+				114,
 				224
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "missup"
+		},
+		{
+			"offsets": [
+				65,
+				342
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "missdown"
+		},
+		{
+			"offsets": [
+				-7,
+				4
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "uwu",
+			"indices": [],
+			"name": "colonthree"
+		},
+		{
+			"offsets": [
+				-7,
+				4
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "grrr",
+			"indices": [],
+			"name": "grrr"
+		},
+		{
+			"offsets": [
+				109,
+				149
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "missright"
+		},
+		{
+			"offsets": [
+				5,
+				28
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				20,
+				-150
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				131,
+				-31
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				-7,
+				-9
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				-2,
+				0
 			],
 			"loop": false,
 			"fps": 24,
@@ -35,32 +112,32 @@
 		},
 		{
 			"offsets": [
-				235,
-				217
+				624,
+				127
 			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "right"
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "missleft"
 		},
 		{
-			"offsets": [
-				352,
-				190
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "left"
+			"offsets": [
+				-15,
+				8
+			],
+			"anim": "hey",
+			"fps": 24,
+			"name": "hey",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/3Derek",
 	"position": [
-		340,
-		300
+		120,
+		60
 	],
 	"healthicon": "3Derek",
 	"flip_x": true,
@@ -70,8 +147,8 @@
 		107
 	],
 	"camera_position": [
-		350,
-		-30
+		-10,
+		120
 	],
 	"sing_duration": 4,
 	"scale": 0.9
